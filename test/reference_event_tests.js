@@ -576,7 +576,7 @@ test('updating an object in tree with another object that has additional attribu
 
     ref.child('c').on('child_added', function(s) {
         equal(s.name(), 'c', 'should have added c' );
-    })
+    });
 
     ref.on('value', function (s) {
         equal(s.name(), 't');
@@ -586,8 +586,5 @@ test('updating an object in tree with another object that has additional attribu
     expect(3);
 });
 
-//test update
-//add more child_changed tests
-//make on and once act as queries
-//todo test event order, but wait till all 6 events are implemented to do this
-//todo see if we need to freeze data being set (so we dont accidentily reference modify the store)
+
+

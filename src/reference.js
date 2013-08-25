@@ -261,6 +261,7 @@ Reference.prototype = {
             return child;
         }
         child.set(value);
+        this._fireEvent('child_added', child._splitUrl, value);
         //ensures consistent return points
         return undefined;
     },
