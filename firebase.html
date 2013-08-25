@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+    <script>
+        var root = 'https://dev-firebase.firebaseio.com/';
+        var ref = new Firebase(root + 'red/blue/green');
+
+       // ref.set('colors');
+        ref.on('child_added', function(){
+            console.log('added');
+        })
+        ref.on('child_removed', function(){
+            console.log('removed');
+        })
+        ref.set('more colors');
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
