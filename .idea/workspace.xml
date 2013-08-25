@@ -58,15 +58,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="equiv.js" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/equiv.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="snapshot_tests.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/snapshot_tests.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -432,15 +423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QUnitAdapter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.15695067">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/reference_basic_tests.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.050904978">
@@ -493,13 +475,6 @@
     <entry file="file://$PROJECT_DIR$/src/event_node.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="106" column="38" selection-start="3724" selection-end="3724" vertical-scroll-proportion="-0.32698768">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/equiv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
