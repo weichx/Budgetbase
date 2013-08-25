@@ -1,4 +1,5 @@
 //todo put this in a closure / module
+//todo add completion callbacks to set, push, update
 //creates a reference which is a url path that is possibly evented and bound to the data tree.
 var Reference = function (splitUrl, parent) {
     this._splitUrl = splitUrl;
@@ -95,6 +96,15 @@ Reference.prototype = {
             this.remove();
             return;
         }
+        //we dont allow arrays, so process the value if it is an array and convert it to an object who's keys are
+        //the array indices and values are the array values at that index.
+        if (Object.prototype.toString.call(value) === '[object Array]') {
+            var obj = {};
+            for (var a = 0, al = value.length; a < al; a++) {
+                obj[a] = value[a];
+            }
+            value = obj;
+        }
         var parent = this._parent;
         //upwards trace to make sure parent is an object and in tree
         parent._willSetChild(this._name, value);
@@ -150,7 +160,7 @@ Reference.prototype = {
     //sets a value at this reference location, invoking events as needed.
     set:function (value) {
         //only fire child_changed events if the location was previously null.
-        var shouldFireChanges = this._data !== null;
+        var shouldFireChanges = true; //this._data !== null;
         this._set(value);
         if (shouldFireChanges) {
             this._didChangeChild(this._name, this._data);
@@ -227,6 +237,28 @@ Reference.prototype = {
         parent && parent._willRemoveChild(this._name, this._data);
         this._fireEvent('value', this._splitUrl, null);
         this._data = null;
+    },
+
+    //todo find a better pushId
+    //todo revisit when we add priority
+    //push is a reference generator. it will add a child to this location with a unique, timestamp based
+    //key name. if parameters are passed into this function it will also call set on the child, otherwise
+    //it will return the child.
+    push:function (value) {
+        //dont allow pushing null values
+        if (value === null) {
+            return undefined;
+        }
+        var pushId = new Date().getTime().toString();
+        var child = new Reference(this._splitUrl.concat([pushId]), this);
+        this._children[pushId] = child;
+        //return the child if no arguments are supplied
+        if (value === undefined) {
+            return child;
+        }
+        child.set(value);
+        //ensures consistent return points
+        return undefined;
     },
 
     //returns the returns the url of the reference

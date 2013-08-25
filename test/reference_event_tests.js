@@ -441,16 +441,16 @@ test('setting a location to a an object that contains other objects will fire of
         threeValue++;
     });
     var child1Ref = threeRef.child('child1');
-    child1Ref.on('value', function(snapshot){
+    child1Ref.on('value', function (snapshot) {
         child1Value++;
     });
-    child1Ref.on('child_added', function(snapshot){
+    child1Ref.on('child_added', function (snapshot) {
         child1ChildAdded++;
     });
     threeRef.set({
-        'child1' : {
-            a: 1,
-            b: 2
+        'child1':{
+            a:1,
+            b:2
         }
     });
     equal(threeChildAdded, 1, 'should have added one child to threeRef');
@@ -460,9 +460,9 @@ test('setting a location to a an object that contains other objects will fire of
 
 });
 
-test('calling set on a location not in the tree will not fire child_changed events on any parents.', function(){
+test('calling set on a location not in the tree will not fire child_changed events on any parents.', function () {
     var ref = new Budgetbase('t/e/s/t');
-    var fn = function(snapshot){
+    var fn = function (snapshot) {
         ok(false);
     };
     ref.on('child_changed', fn);
@@ -473,9 +473,9 @@ test('calling set on a location not in the tree will not fire child_changed even
     expect(0);
 });
 
-test('calling set on a location that is in the tree will fire child_changed events on all ancestors', function(){
+test('calling set on a location that is in the tree will fire child_changed events on all ancestors', function () {
     var ref = new Budgetbase('t/e/s/t');
-    var fn = function(snapshot){
+    var fn = function (snapshot) {
         ok(true);
     };
     ref.on('child_changed', fn);
@@ -484,7 +484,64 @@ test('calling set on a location that is in the tree will fire child_changed even
     ref.parent().parent().parent().on('child_changed', fn);
     ref.set('ok');
     ref.set('hi');
-    expect(3); // was 4
+    expect(3);
+});
+
+test('calling push with no parameters on a location will return a child reference for that location', function () {
+    var ref = new Budgetbase('test');
+    var push = ref.push();
+    equal(push._data, null, 'should have null data pointer');
+    equal(push._parent, ref, 'should have parent of ref');
+    ok(push._name, 'name should be a valid value');
+});
+
+test('calling set on a push ref will set its value and fire a child added event on the parent', function () {
+    var ref = new Budgetbase('test');
+    var push = ref.push();
+    push.on('value', function (s) {
+        equal(s.val(), 'hello budgetbase');
+    });
+    ref.on('child_added', function (s) {
+        equal(push.name(), s.name());
+    });
+    push.set('hello budgetbase');
+    expect(2);
+});
+
+test('calling push with a value parameter will add a child to the parent and fire child_added', function () {
+    var ref = new Budgetbase('test');
+    ref.on('child_added', function (s) {
+        equal(s.val(), 'hello budgetbase');
+    });
+    ref.push('hello budgetbase');
+    expect(1);
+});
+
+test('calling push with a null value will not add a child to the parent', function(){
+    var ref = new Budgetbase('test');
+    ref.on('child_added', function(s){
+        ok(false);
+    });
+    ref.push(null);
+    expect(0);
+});
+
+test('calling set(somevalue) on a location not in the tree will trigger a child_changed on that locations ancestors', function(){
+    var ref = new Budgetbase('here/we/go');
+    ref.parent().on('child_changed', function(s){
+        console.log(s.val());
+    });
+    ref.set('somevalue');
+});
+
+test('calling set with an array will convert the array to an object and add each key as a child', function(){
+    var ref = new Budgetbase('test');
+    ref.on('child_added', function(s){
+        ok(s);
+    });
+    var array = ['this', 'is', 'awesome'];
+    ref.set(array);
+    expect(3);
 });
 
 test('updating an object in tree with another object that has additional attributes', function() {
@@ -532,6 +589,7 @@ test('updating an object in tree with another object that has additional attribu
 test('updating')
 
 //test update
+//add more child_changed tests
 //make on and once act as queries
 //todo test event order, but wait till all 6 events are implemented to do this
 //todo see if we need to freeze data being set (so we dont accidentily reference modify the store)

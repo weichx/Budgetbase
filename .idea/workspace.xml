@@ -55,19 +55,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.gitignore">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="12" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
+                <state line="10" column="12" selection-start="118" selection-end="118" vertical-scroll-proportion="-1.7226464">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="reference_event_tests.js" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="reference_event_tests.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="493" column="23" selection-start="15682" selection-end="15682" vertical-scroll-proportion="0.36963978">
+                <state line="533" column="65" selection-start="17073" selection-end="17073" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -95,10 +95,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="reference.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/reference.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="124" column="50" selection-start="5851" selection-end="5851" vertical-scroll-proportion="0.27989823">
+                <state line="28" column="24" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -113,10 +113,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="firebase.html" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="firebase.html" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/firebase.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="23" column="4" selection-start="706" selection-end="706" vertical-scroll-proportion="0.0">
+                <state line="63" column="24" selection-start="1618" selection-end="1618" vertical-scroll-proportion="0.8181818">
                   <folding />
                 </state>
               </provider>
@@ -153,9 +153,9 @@
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/src/budgetbase.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/firebase.html" />
         <option value="$PROJECT_DIR$/src/reference.js" />
         <option value="$PROJECT_DIR$/test/reference_event_tests.js" />
+        <option value="$PROJECT_DIR$/firebase.html" />
       </list>
     </option>
   </component>
@@ -371,7 +371,7 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -381,7 +381,6 @@
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
     <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
     <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="DETECT_NESTED_COPIES" value="true" />
     <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
@@ -515,13 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="12" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/snapshot_tests.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
@@ -564,13 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/firebase.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="4" selection-start="706" selection-end="706" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="15" selection-start="812" selection-end="812" vertical-scroll-proportion="0.0">
@@ -578,16 +563,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
+    <entry file="file://$PROJECT_DIR$/src/reference.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="493" column="23" selection-start="15682" selection-end="15682" vertical-scroll-proportion="0.36963978">
+        <state line="28" column="24" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reference.js">
+    <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="50" selection-start="5851" selection-end="5851" vertical-scroll-proportion="0.27989823">
+        <state line="533" column="65" selection-start="17073" selection-end="17073" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="12" selection-start="118" selection-end="118" vertical-scroll-proportion="-1.7226464">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/firebase.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="24" selection-start="1618" selection-end="1618" vertical-scroll-proportion="0.8181818">
           <folding />
         </state>
       </provider>
