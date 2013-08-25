@@ -1,10 +1,11 @@
 QUnitAdapter.js
 equiv.js
-
+.idea/
+.idea/*
 #################
 ## Eclipse
 #################
-.idea/
+
 *.pydevproject
 .project
 .metadata
