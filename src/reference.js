@@ -116,6 +116,7 @@ Reference.prototype = {
         var child;
 
         if (oldValueIsObject && newValueIsObject) {
+            console.log("set: two objects");
             for (var x in oldValue) {
                 if (value[x] === undefined) { //remove old values not in new value
                     child = this._addOrRetrieveChild(x);
@@ -180,9 +181,12 @@ Reference.prototype = {
             throw new Error("Budgetbase.update failed: Was called with 0 arguments. Expects at least 1.");
         }
 
+
+
         //we dont allow arrays, so process the value if it is an array and convert it to an object who's keys are
         //the array indices and values are the array values at that index.
         if (Object.prototype.toString.call(value) === '[object Array]') {
+            console.log("getting here");
             var obj = {};
             for (var a = 0, al = value.length; a < al; a++) {
                 obj[a] = value[a];
@@ -206,6 +210,7 @@ Reference.prototype = {
         if(oldValueIsObject && newValueIsObject) {
             console.log("two objects");
             for(var z in value) {
+
                 child = this._addOrRetrieveChild(z);
                 child._set(value[z]);
             }
@@ -260,7 +265,7 @@ Reference.prototype = {
         if (value === undefined) {
             return child;
         }
-        child.set(value);
+        child._set(value);
         this._fireEvent('child_added', child._splitUrl, value);
         //ensures consistent return points
         return undefined;

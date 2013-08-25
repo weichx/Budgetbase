@@ -3,19 +3,72 @@
 <head>
     <title></title>
     <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+
+
+
+
     <script>
+        /*
         var Budgetbase = Firebase;
         var root = 'https://dev-firebase.firebaseio.com/';
 
-        var ref = new Budgetbase(root + 'three');
+        var ref = new Budgetbase(root + 'one');
 
         ref.on('child_added', function(s){
             console.log(s.name());
         });
 
         ref.update({'child': 1});
+             */
+    </script>
+
+    <script>
+
+        var Budgetbase = Firebase;
+
+        var root = "https://burst.firebaseio.com/";
+
+        var ref = new Budgetbase(root + "two");
+
+        var initial = {
+            'a':{
+                "a1" : 1,
+                "a2" : 2
+            } ,
+
+            'b': {
+                "b1" : 2,
+                "b2" : 3
+            }
+        }
+
+        var end = {
+            'a':{
+                "a1" : 10,
+                "a2" : 20
+            },
+
+            'b' : {
+                'b3' : 4,
+                'b4' : 5
+            }
+        }
+
+        ref.set(initial);
+
+        ref.on('child_added', function(s) {
+            console.log("child added: " + s.name());
+        });
+
+        ref.on('child_changed', function(s) {
+            console.log("child changed: " + s.name());
+        }) ;
+
+        console.log("____________");
+        ref.update(end);
 
     </script>
+
 </head>
 <body>
 

@@ -544,6 +544,8 @@ test('calling set with an array will convert the array to an object and add each
     expect(3);
 });
 
+
+
 test('updating an object in tree with another object that has additional attributes', function() {
     var ref = new Budgetbase('t/e/s/t');
 
@@ -562,13 +564,9 @@ test('updating an object in tree with another object that has additional attribu
         equal(s.name(), 'c', 'should have added c');
     });
 
-    ref.on('child_removed', function (s) {
-        equal(s.name(), 'b', 'should have removed b');
-    });
-
     ref.on("child_changed", function(s) {
           ok(true);
-    }) ;
+    });
 
     ref.child('a').on('value', function (s) {
         equal(s.name(), 'a', 'should have changed value of a');
@@ -583,8 +581,53 @@ test('updating an object in tree with another object that has additional attribu
     });
 
     ref.update(end);
+
+
     expect(3);
 });
+
+test('calling update on an object whose children are also ', function() {
+
+    var ref = new Budgetbase("one");
+
+    var initial = {
+
+        'b': {
+            "b1" : 2,
+            "b2" : 3
+        }
+    }
+
+    var end = {
+
+        'a' : {
+            'b3' : 4,
+            'b4' : 5
+        },
+
+        'c':4
+    }
+
+    ref.set(initial);
+
+    ref.on('child_added', function(s) {
+        equal(s.name(), s.name(), "");
+        equal(s.name(), s.name(), "b4 is getting added");
+    });
+
+
+    ref.on('child_changed', function(s) {
+        equal(s.name(), s.name(), "adding: " + s.name());
+    });
+
+
+    ref.update(end);
+
+    console.log(ref.child('c')._data);
+    console.log(ref.child('a').child('b4')._data);
+
+    expect(2);
+})  ;
 
 
 
