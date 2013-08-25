@@ -399,7 +399,7 @@ test('setting a location already occuipied by an object to another object with d
 
 });
 
-test('setting a location to a different object with overlapping keys should remove/add/update properly', function () {
+test('setting a location to a different object with overlapping keys should remove/add/update properly and value is called on parent only once', function () {
     var ref = new Budgetbase('t/e/s/t');
     var initial = {
         'a':1,
@@ -420,12 +420,47 @@ test('setting a location to a different object with overlapping keys should remo
         equal(s.name(), 'a', 'should have changed value of a');
     });
 
+    ref.on('value', function (s) {
+        equal(s.name(), 't');
+    });
+
     ref.set(end);
-    expect(3);
+    expect(4);
 });
 
-//test nested value and child added / removed
-//test mixed object (old and new, some keys removed, some updated, some added)
+test('setting a location to a an object that contains other objects will fire off child_added and value events properly', function () {
+    var threeRef = new Budgetbase('one/two/three');
+    var threeChildAdded = 0;
+    var threeValue = 0;
+    var child1ChildAdded = 0;
+    var child1Value = 0;
+    threeRef.on('child_added', function () {
+        threeChildAdded++;
+    });
+    threeRef.on('value', function () {
+        threeValue++;
+    });
+    var child1Ref = threeRef.child('child1');
+    child1Ref.on('value', function(snapshot){
+        child1Value++;
+    });
+    child1Ref.on('child_added', function(snapshot){
+        child1ChildAdded++;
+    });
+    threeRef.set({
+        'child1' : {
+            a: 1,
+            b: 2
+        }
+    });
+    equal(threeChildAdded, 1, 'should have added one child to threeRef');
+    equal(threeValue, 1, 'should have called value on threeRef once');
+    equal(child1Value, 1, 'should have called child1 value once');
+    equal(child1ChildAdded, 2, 'should have called child1 child_added twice');
+
+});
+
 //test update
 //make on and once act as queries
+//todo test event order, but wait till all 6 events are implemented to do this
 //todo see if we need to freeze data being set (so we dont accidentily reference modify the store)

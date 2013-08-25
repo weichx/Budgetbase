@@ -4,17 +4,40 @@
     <title></title>
     <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
     <script>
+        var Budgetbase = Firebase;
         var root = 'https://dev-firebase.firebaseio.com/';
-        var ref = new Firebase(root + 'red/blue/green');
-
-       // ref.set('colors');
-        ref.on('child_added', function(){
-            console.log('added');
+        var threeRef = new Budgetbase(root + 'one/two/three');
+        var one = new Budgetbase(root + 'one');
+        one.on('child_changed', function(){
+            console.log('one child changed');
         })
-        ref.on('child_removed', function(){
-            console.log('removed');
+        threeRef.on('child_changed', function(){
+            console.log('changed');
+        });
+        var childRef = threeRef.child('child1');
+        childRef.on('child_changed', function(){
+            console.log('child_changed changed');
         })
-        ref.set('more colors');
+        threeRef.set({
+            'child1' : {
+                a: 1,
+                b: 2
+            }
+        });
+        threeRef.set({
+            'child1' : {
+                a:2
+            }
+        });
+        threeRef.set({
+            'child1': {
+                a: 3
+            },
+            'child2': {
+                b: 4
+            }
+        })
+    //    childRef.remove();
 
     </script>
 </head>

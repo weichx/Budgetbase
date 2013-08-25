@@ -69,6 +69,12 @@ Reference.prototype = {
         }
     },
 
+    _didChangeChild:function (childKey, childData) {
+        var parent = this._parent;
+        parent._fireEvent('child_changed', childKey, childData);
+        parent._didChangeChild(this._name, this._data);
+    },
+
     //subscribes the reference to events. we could check that the event is valid, but we dont for now.
     on:function (evtType, callback, context) {
         if (!callback) throw new Error('You must supply a callback and event type to on');
@@ -78,8 +84,10 @@ Reference.prototype = {
         this._events[evtType].push(callback);
     },
 
-    //sets a value at this reference location, invoking events as needed.
-    set:function (value) {
+    //internal set function to handle upwards firing of child changed events. Without this we would have little control
+    //over when to fire child_changed events due to possible object nesting and the requirement that only one child_changed
+    //event gets triggered per set call.
+    _set:function (value) {
         //if set is called with a null or undefined value, we skip set and go straight to remove()
         if (value === null || value === undefined) {
             this.remove();
@@ -103,7 +111,9 @@ Reference.prototype = {
                 } else {    //update old values still in new value
                     child = this._addOrRetrieveChild(x);
                     child.set(value[x]);
-                    //todo call child_changed here or handle elsewhere
+                    //manually fire child_changed event, the upwards calls will happen in set() so we only handle
+                    //downwards child_changed calls here.
+                    this._fireEvent('child_changed', child._splitUrl, value[x]);
                 }
             }
             for (var z in value) {
@@ -129,8 +139,12 @@ Reference.prototype = {
             //new and old are primitives
         }
         this._fireEvent('value', this._splitUrl, this._data);
+    },
 
-        //upwards fire didSetChild() -> invokes child changed handlers, stopping when we no longer listen for that event
+    //sets a value at this reference location, invoking events as needed.
+    set:function (value) {
+        this._set(value);
+        this._didChangeChild(this._name, this._data);
         //network data: url of changes, call update on top most root that was affected
     },
 
@@ -162,7 +176,16 @@ Reference.prototype = {
 
     //creates or retrieves a child of this reference
     child:function (key) {
-        return this._addOrRetrieveChild(key);
+        var split = key.split('/');
+        if (split.length > 1) {
+            var child;
+            for (var i = 0, il = split.length; i < il; i++) {
+                child = this._addOrRetrieveChild(split[i]);
+            }
+            return child;
+        } else {
+            return this._addOrRetrieveChild(key);
+        }
     }
 
 };
