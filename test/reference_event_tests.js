@@ -518,26 +518,27 @@ test('calling push with a value parameter will add a child to the parent and fir
     expect(2);
 });
 
-test('calling push with a null value will not add a child to the parent', function(){
+test('calling push with a null value will not add a child to the parent', function () {
     var ref = new Budgetbase('test');
-    ref.on('child_added', function(s){
+    ref.on('child_added', function (s) {
         ok(false);
     });
     ref.push(null);
     expect(0);
 });
 
-test('calling set(somevalue) on a location not in the tree will trigger a child_changed on that locations ancestors', function(){
+test('calling set(somevalue) on a location not in the tree will not trigger a child_changed on that locations ancestors', function () {
     var ref = new Budgetbase('here/we/go');
-    ref.parent().on('child_changed', function(s){
-        console.log(s.val());
+    ref.parent().on('child_changed', function (s) {
+        equal(s.name(), 'go', 'name should have been go');
     });
     ref.set('somevalue');
+    expect(0);
 });
 
-test('calling set with an array will convert the array to an object and add each key as a child', function(){
+test('calling set with an array will convert the array to an object and add each key as a child', function () {
     var ref = new Budgetbase('test');
-    ref.on('child_added', function(s){
+    ref.on('child_added', function (s) {
         ok(s);
     });
     var array = ['this', 'is', 'awesome'];
@@ -545,17 +546,17 @@ test('calling set with an array will convert the array to an object and add each
     expect(3);
 });
 
-test('updating an object in tree with another object that has additional attributes', function() {
+test('updating an object in tree with another object that has additional attributes', function () {
     var ref = new Budgetbase('t/e/s/t');
 
-        var initial = {
-            'a':1,
-            'b':2
-        };
-        var end = {
-            'a':2,
-            'c':3
-        };
+    var initial = {
+        'a':1,
+        'b':2
+    };
+    var end = {
+        'a':2,
+        'c':3
+    };
 
     ref.set(initial);
 
@@ -567,16 +568,16 @@ test('updating an object in tree with another object that has additional attribu
         equal(s.name(), 'b', 'should have removed b');
     });
 
-    ref.on("child_changed", function(s) {
-          ok(true);
-    }) ;
+    ref.on("child_changed", function (s) {
+        ok(true);
+    });
 
     ref.child('a').on('value', function (s) {
         equal(s.name(), 'a', 'should have changed value of a');
     });
 
-    ref.child('c').on('child_added', function(s) {
-        equal(s.name(), 'c', 'should have added c' );
+    ref.child('c').on('child_added', function (s) {
+        equal(s.name(), 'c', 'should have added c');
     });
 
     ref.on('value', function (s) {
@@ -587,9 +588,28 @@ test('updating an object in tree with another object that has additional attribu
     expect(3);
 });
 
+test('calling update on a location with null will throw an exception', function () {
+    var ref = new Budgetbase('one');
+    throws(function () {
+        ref.update(null);
+    });
+    expect(1);
+});
 
-//test update
-//add more child_changed tests
-//make on and once act as queries
-//todo test event order, but wait till all 6 events are implemented to do this
-//todo see if we need to freeze data being set (so we dont accidentily reference modify the store)
+test('calling update on a location with no arguments will throw an exception', function () {
+    var ref = new Budgetbase('one');
+    throws(function () {
+        ref.update();
+    });
+    expect(1);
+});
+
+test('calling update on a location with a primitive will throw an exception', function(){
+    var ref = new Budgetbase('one');
+    throws(function () {
+        ref.update('hello');
+    });
+    expect(1);
+});
+
+

@@ -219,10 +219,6 @@ Reference.prototype = {
         }
         else if(oldValueIsObject) {
              console.log("old value is object, new value is primitive")
-        } else{
-            // two primitives
-            console.log("update: two primitives");
-            this._set(value);
         }
 
         this._fireEvent('value', this._splitUrl, this._data);

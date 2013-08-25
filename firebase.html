@@ -6,14 +6,24 @@
     <script>
         var Budgetbase = Firebase;
         var root = 'https://dev-firebase.firebaseio.com/';
+        var ref = new Budgetbase(root + 'here/we/go');
 
-        var ref = new Budgetbase(root + 'three');
-
-        ref.on('child_added', function(s){
+        ref.parent().on('child_changed', function (s) {
+            //equal(s.name(), 'go', 'name should have been go');
             console.log(s.name());
         });
 
-        ref.update({'child': 1});
+        ref.update({
+            'child1': {
+                'childofchild': 1
+            }
+        });
+
+        ref.update({
+            'child1': {
+                'other' : 3
+            }
+        });
 
     </script>
 </head>

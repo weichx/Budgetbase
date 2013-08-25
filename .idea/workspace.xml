@@ -19,7 +19,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.41763344">
+    <splitter split-orientation="horizontal" split-proportion="0.5353828">
       <split-first>
         <leaf>
           <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
@@ -40,10 +40,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="reference_event_tests.js" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="reference_event_tests.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="513" column="14" selection-start="16464" selection-end="16464" vertical-scroll-proportion="0.4489093">
+                <state line="613" column="0" selection-start="18948" selection-end="18948" vertical-scroll-proportion="0.8992161">
                   <folding />
                 </state>
               </provider>
@@ -61,25 +61,24 @@
           <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/reference.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="305" column="2" selection-start="12420" selection-end="12420" vertical-scroll-proportion="0.0">
+                <state line="301" column="2" selection-start="12293" selection-end="12293" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
-                    <marker date="1377462364000" expanded="true" signature="881:12413" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="7579:9673" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="9586:9626" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="9796:9996" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="9892:9931" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="10003:10168" placeholder="//..." />
-                    <marker date="1377462364000" expanded="true" signature="10192:10491" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="10835:11673" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="11205:11242" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="11747:11795" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="11860:11894" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="11963:11999" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="12080:12417" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="12148:12344" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="12233:12308" placeholder="{...}" />
-                    <marker date="1377462364000" expanded="true" signature="12350:12411" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="881:12286" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="7579:9580" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="9669:9869" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="9765:9804" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="9876:10041" placeholder="//..." />
+                    <marker date="1377462389000" expanded="true" signature="10065:10364" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="10708:11546" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="11078:11115" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="11620:11668" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="11733:11767" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="11836:11872" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="11953:12290" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="12021:12217" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="12106:12181" placeholder="{...}" />
+                    <marker date="1377462389000" expanded="true" signature="12223:12284" placeholder="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -98,10 +97,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="reference.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/reference.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="255" column="0" selection-start="10837" selection-end="10837" vertical-scroll-proportion="0.53642386">
+                <state line="247" column="59" selection-start="10498" selection-end="10498" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -118,10 +117,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="firebase.html" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="firebase.html" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/firebase.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="24" column="0" selection-start="473" selection-end="473" vertical-scroll-proportion="-15.0">
+                <state line="29" column="6" selection-start="707" selection-end="707" vertical-scroll-proportion="0.4931973">
                   <folding />
                 </state>
               </provider>
@@ -158,9 +157,9 @@
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/src/budgetbase.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/reference.js" />
         <option value="$PROJECT_DIR$/firebase.html" />
         <option value="$PROJECT_DIR$/test/reference_event_tests.js" />
-        <option value="$PROJECT_DIR$/src/reference.js" />
       </list>
     </option>
   </component>
@@ -530,26 +529,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/reference.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="301" column="2" selection-start="12293" selection-end="12293" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1377462389000" expanded="true" signature="881:12286" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="7579:9580" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="9669:9869" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="9765:9804" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="9876:10041" placeholder="//..." />
+            <marker date="1377462389000" expanded="true" signature="10065:10364" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="10708:11546" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="11078:11115" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="11620:11668" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="11733:11767" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="11836:11872" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="11953:12290" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="12021:12217" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="12106:12181" placeholder="{...}" />
+            <marker date="1377462389000" expanded="true" signature="12223:12284" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/firebase.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="473" selection-end="473" vertical-scroll-proportion="-15.0">
+        <state line="29" column="6" selection-start="707" selection-end="707" vertical-scroll-proportion="0.4931973">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="513" column="14" selection-start="16464" selection-end="16464" vertical-scroll-proportion="0.4489093">
+        <state line="613" column="0" selection-start="18948" selection-end="18948" vertical-scroll-proportion="0.8992161">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reference.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="255" column="0" selection-start="10837" selection-end="10837" vertical-scroll-proportion="0.53642386">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
