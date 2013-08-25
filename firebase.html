@@ -6,38 +6,17 @@
     <script>
         var Budgetbase = Firebase;
         var root = 'https://dev-firebase.firebaseio.com/';
-        var threeRef = new Budgetbase(root + 'one/two/three');
-        var one = new Budgetbase(root + 'one');
-        one.on('child_changed', function(){
-            console.log('one child changed');
-        })
-        threeRef.on('child_changed', function(){
-            console.log('changed');
-        });
-        var childRef = threeRef.child('child1');
-        childRef.on('child_changed', function(){
-            console.log('child_changed changed');
-        })
-        threeRef.set({
-            'child1' : {
-                a: 1,
-                b: 2
-            }
-        });
-        threeRef.set({
-            'child1' : {
-                a:2
-            }
-        });
-        threeRef.set({
-            'child1': {
-                a: 3
-            },
-            'child2': {
-                b: 4
-            }
-        })
-    //    childRef.remove();
+        var ref = new Budgetbase(root + 't/e/s/t');
+        var fn = function(snapshot){
+            console.log('child_added');
+        }
+        ref.on('child_changed', fn);
+        ref.parent().on('child_changed', fn);
+        ref.parent().parent().on('child_changed', fn);
+        ref.parent().parent().parent().on('child_changed', fn);
+        ref.set('ok');
+        ref.set('kk');
+        ref.set('hi');
 
     </script>
 </head>

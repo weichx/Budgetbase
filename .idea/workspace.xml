@@ -37,12 +37,20 @@
           <file leaf-file-name="snapshot.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/snapshot.js">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
                 <state line="43" column="44" selection-start="1725" selection-end="1725" vertical-scroll-proportion="0.0">
                   <folding />
+=======
+                <state line="32" column="6" selection-start="1404" selection-end="1404" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.gitignore">
               <provider selected="true" editor-type-id="text-editor">
@@ -56,6 +64,12 @@
             <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="400" column="16" selection-start="12779" selection-end="12779" vertical-scroll-proportion="0.0">
+=======
+          <file leaf-file-name="reference_event_tests.js" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="485" column="18" selection-start="15469" selection-end="15469" vertical-scroll-proportion="0.8656215">
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
                   <folding />
                 </state>
               </provider>
@@ -83,10 +97,26 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/reference.js">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
                 <state line="83" column="3" selection-start="3799" selection-end="3799" vertical-scroll-proportion="0.089058526">
+                  <folding />
+=======
+                <state line="145" column="43" selection-start="6674" selection-end="6674" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="2" column="17" selection-start="46" selection-end="46" vertical-scroll-proportion="0.03311258">
                   <folding />
                 </state>
               </provider>
@@ -95,7 +125,11 @@
           <file leaf-file-name="firebase.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/firebase.html">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
                 <state line="36" column="20" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.0">
+=======
+                <state line="18" column="22" selection-start="657" selection-end="657" vertical-scroll-proportion="-11.25">
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
                   <folding />
                 </state>
               </provider>
@@ -104,7 +138,11 @@
           <file leaf-file-name="budgetbase.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
                 <state line="25" column="15" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0">
+=======
+                <state line="15" column="0" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
                   <folding />
                 </state>
               </provider>
@@ -131,9 +169,12 @@
         <option value="$PROJECT_DIR$/src/snapshot.js" />
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/firebase.html" />
-        <option value="$PROJECT_DIR$/src/reference.js" />
         <option value="$PROJECT_DIR$/test/reference_event_tests.js" />
         <option value="$PROJECT_DIR$/src/budgetbase.js" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/src/reference.js" />
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -383,7 +424,11 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1521482" sideWeight="0.6706507" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1523458" sideWeight="0.6706507" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -515,13 +560,20 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="44" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/firebase.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="22" selection-start="657" selection-end="657" vertical-scroll-proportion="-11.25">
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/firebase.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="20" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.0">
@@ -532,6 +584,20 @@
     <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="400" column="16" selection-start="12779" selection-end="12779" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/src/snapshot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="6" selection-start="1404" selection-end="1404" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="44" selection-start="179" selection-end="179" vertical-scroll-proportion="-3.75">
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
           <folding />
         </state>
       </provider>
@@ -543,30 +609,53 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="15" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="485" column="18" selection-start="15469" selection-end="15469" vertical-scroll-proportion="0.8656215">
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/reference.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="83" column="3" selection-start="3799" selection-end="3799" vertical-scroll-proportion="0.089058526">
+=======
+    <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/snapshot.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="43" column="44" selection-start="1725" selection-end="1725" vertical-scroll-proportion="0.0">
           <folding />
+=======
+        <state line="145" column="43" selection-start="6674" selection-end="6674" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="11" column="16" selection-start="115" selection-end="115" vertical-scroll-proportion="0.13994911">
+=======
+        <state line="2" column="17" selection-start="46" selection-end="46" vertical-scroll-proportion="0.03311258">
+>>>>>>> e3a151d7fbf3d113f5955d41372c929efde8dc33
           <folding />
         </state>
       </provider>
