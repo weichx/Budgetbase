@@ -484,8 +484,53 @@ test('calling set on a location that is in the tree will fire child_changed even
     ref.parent().parent().parent().on('child_changed', fn);
     ref.set('ok');
     ref.set('hi');
-    expect(4);
+    expect(3); // was 4
 });
+
+test('updating an object in tree with another object that has additional attributes', function() {
+    var ref = new Budgetbase('t/e/s/t');
+
+        var initial = {
+            'a':1,
+            'b':2
+        };
+        var end = {
+            'a':2,
+            'c':3
+        };
+
+    ref.set(initial);
+
+    ref.on('child_added', function (s) {
+        equal(s.name(), 'c', 'should have added c');
+    });
+
+    ref.on('child_removed', function (s) {
+        equal(s.name(), 'b', 'should have removed b');
+    });
+
+    ref.on("child_changed", function(s) {
+          ok(true);
+    }) ;
+
+    ref.child('a').on('value', function (s) {
+        equal(s.name(), 'a', 'should have changed value of a');
+    });
+
+    ref.child('c').on('child_added', function(s) {
+        equal(s.name(), 'c', 'should have added c' );
+    })
+
+    ref.on('value', function (s) {
+        equal(s.name(), 't');
+    });
+
+    ref.update(end);
+    expect(3);
+});
+
+test('updating')
+
 //test update
 //make on and once act as queries
 //todo test event order, but wait till all 6 events are implemented to do this

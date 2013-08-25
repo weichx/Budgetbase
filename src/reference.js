@@ -138,6 +138,10 @@ Reference.prototype = {
                 this._fireEvent('child_added', child._splitUrl, value[k]);
             }
         } else {
+            console.log("set: two primitives");
+            if(oldValue === null || oldValue === undefined) {
+                this._fireEvent('child_added', this._splitUrl, this._data);
+            }
             //new and old are primitives
         }
         this._fireEvent('value', this._splitUrl, this._data);
@@ -152,6 +156,66 @@ Reference.prototype = {
             this._didChangeChild(this._name, this._data);
         }
         //network data: url of changes, call update on top most root that was affected
+    },
+
+    _update:function (value) {
+        console.log("updating");
+        if (value === null || value === undefined) {
+            this.remove();
+            return;
+        }
+
+        //we dont allow arrays, so process the value if it is an array and convert it to an object who's keys are
+        //the array indices and values are the array values at that index.
+        if (Object.prototype.toString.call(value) === '[object Array]') {
+            var obj = {};
+            for (var a = 0, al = value.length; a < al; a++) {
+                obj[a] = value[a];
+            }
+            value = obj;
+        }
+
+
+        var parent = this._parent;
+        //upwards trace to make sure parent is an object and in tree
+        parent._willSetChild(this._name, value);
+
+        var oldValue = this._data;
+        var newValueIsObject = typeof value === 'object' && value !== null;
+        var oldValueIsObject = typeof oldValue === 'object' && oldValue !== null;
+        var child;
+
+        if(oldValueIsObject && newValueIsObject) {
+            console.log("two objects");
+            for(var z in value) {
+                child = this._addOrRetrieveChild(z);
+                child._set(value[z]);
+            }
+        }
+        else if(newValueIsObject) {
+            conole.log("new object");
+            for (var k in value) {
+                child = this._addOrRetrieveChild(k);
+                child._set(value[k]);
+            }
+        }
+        else if(oldValueIsObject) {
+             console.log("old value is object, new value is primitive")
+        } else{
+            // two primitives
+            console.log("update: two primitives");
+            this._set(value);
+        }
+
+        this._fireEvent('value', this._splitUrl, this._data);
+    },
+
+    update:function(value ) {
+        var shouldFireChanges = this.data !== null;
+        this._update(value);
+        if(shouldFireChanges) {
+            this._didChangeChild(this._name, this._data );
+        }
     },
 
     //removes this reference from the tree. does NOT remove event listeners attached to this reference
