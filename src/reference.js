@@ -3,6 +3,7 @@
 //creates a reference which is a url path that is possibly evented and bound to the data tree.
 var Reference = function (splitUrl, parent) {
     this._splitUrl = splitUrl;
+    this._url = splitUrl.join('/');
     this._parent = parent;
     this._data = null;
     this._name = splitUrl[splitUrl.length - 1];
@@ -60,12 +61,12 @@ Reference.prototype = {
         var keys = Object.keys(this._data); //we know it's an object because it has a child trying to be removed
         //remove self from tree if we only had one child
         if (keys.length === 1) {
-            this._fireEvent('child_removed', url.slice(0, url.length - 1), childData);
+            this._fireEvent('child_removed', url.concat([childKey]), childData);
             this._fireEvent('value', url, null);
             this._parent && this._parent._willRemoveChild(this._name, this._data);
             this._data = null;
         } else {
-            this._fireEvent('child_removed', url, childData);
+            this._fireEvent('child_removed', url.concat([childKey]), childData);
             delete this._data[childKey];
         }
     },
@@ -85,6 +86,23 @@ Reference.prototype = {
         if (!this._events) this._events = {};
         if (!this._events[evtType]) this._events[evtType] = [];
         this._events[evtType].push(callback);
+
+        if (evtType === 'value') {
+            var data = this._data;
+            if (data !== null) {
+                callback.call((context || window), new Snapshot(this._splitUrl, data));
+            }
+        }
+
+        if (evtType === 'child_added') {
+            var children = this._data;
+            if (typeof children === 'object' && children !== null) {
+                for (var k in children) {
+                    callback.call((context || window), new Snapshot(this._splitUrl, children[k]));
+                }
+            }
+        }
+
     },
 
     //internal set function to handle upwards firing of child changed events. Without this we would have little control
@@ -148,8 +166,7 @@ Reference.prototype = {
                 this._fireEvent('child_added', child._splitUrl, value[k]);
             }
         } else {
-            console.log("set: two primitives");
-            if(oldValue === null || oldValue === undefined) {
+            if (oldValue === null || oldValue === undefined) {
 //                this._fireEvent('child_added', this._splitUrl, this._data);
             }
             //new and old are primitives
@@ -172,11 +189,11 @@ Reference.prototype = {
 
         console.log("updating");
 
-        if(typeof value !== 'object' || value === null ) {
+        if (typeof value !== 'object' || value === null) {
             throw new Error("Budgetbase.update failed: First argument must be an object containing the children to replace. ");
         }
 
-        if(value === undefined) {
+        if (value === undefined) {
             throw new Error("Budgetbase.update failed: Was called with 0 arguments. Expects at least 1.");
         }
 
@@ -203,32 +220,32 @@ Reference.prototype = {
 
         var child;
 
-        if(oldValueIsObject && newValueIsObject) {
+        if (oldValueIsObject && newValueIsObject) {
             console.log("two objects");
-            for(var z in value) {
+            for (var z in value) {
                 child = this._addOrRetrieveChild(z);
                 child._set(value[z]);
             }
         }
-        else if(newValueIsObject) {
+        else if (newValueIsObject) {
             console.log("new object");
             for (var k in value) {
                 child = this._addOrRetrieveChild(k);
                 child._set(value[k]);
             }
         }
-        else if(oldValueIsObject) {
-             console.log("old value is object, new value is primitive")
+        else if (oldValueIsObject) {
+            console.log("old value is object, new value is primitive")
         }
 
         this._fireEvent('value', this._splitUrl, this._data);
     },
 
-    update:function(value ) {
+    update:function (value) {
         var shouldFireChanges = this.data !== null;
         this._update(value);
-        if(shouldFireChanges) {
-            this._didChangeChild(this._name, this._data );
+        if (shouldFireChanges) {
+            this._didChangeChild(this._name, this._data);
         }
     },
 
@@ -258,13 +275,15 @@ Reference.prototype = {
         this._children[pushId] = child;
         //return the child if no arguments are supplied
         if (value === undefined) {
-            return child;
+            var budgetbaseRef = new Budgetbase('');
+            budgetbaseRef._storeRef = child;
+            return budgetbaseRef;
         }
         //if this node does not exist, adding a child will fire child_added for us.
         //if this node does not exist, we need to fire our own child_added event.
         var shouldFireAddChild = this._data !== null;
         child.set(value);
-        if(shouldFireAddChild){
+        if (shouldFireAddChild) {
             this._fireEvent('child_added', child._splitUrl, value);
         }
         //ensures consistent return points

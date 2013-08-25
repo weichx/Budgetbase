@@ -5,13 +5,66 @@ var Budgetbase;
     var root = new Reference([], null);
 
     //creates a new reference or finds an existing reference and retursn it.
-    Budgetbase = function (url) {
+    Budgetbase2 = function (url) {
         var splitUrl = url.split('/');
         var ref = root;
         for (var i = 0, il = splitUrl.length; i < il; i++) {
             ref = ref._addOrRetrieveChild(splitUrl[i]);
         }
         return ref;
+    };
+
+    Budgetbase = function (url) {
+        var splitUrl = url.split('/');
+        var ref = root;
+        if (url !== '') {
+            for (var i = 0, il = splitUrl.length; i < il; i++) {
+                ref = ref._addOrRetrieveChild(splitUrl[i]);
+            }
+        }
+        this._storeRef = ref;
+    };
+
+    Budgetbase.prototype = {
+
+        on:function (evtType, callback, context) {
+            this._storeRef.on(evtType, callback, context);
+        },
+
+        set:function (value) {
+            this._storeRef.set(value);
+        },
+
+        update:function (value) {
+            this._storeRef.update(value);
+        },
+
+        push:function (value) {
+            return this._storeRef.push(value);
+        },
+
+        remove:function () {
+            this._storeRef.remove();
+        },
+
+        url:function () {
+            return this._storeRef._url;
+        },
+
+        name:function () {
+            return this._storeRef._name;
+        },
+
+        parent:function () {
+            if (this._storeRef._parent) {
+                return new Budgetbase(this._storeRef._parent._url);
+            }
+            return null;
+        },
+
+        child:function (childPath) {
+            return new Budgetbase(this._storeRef._url + '/' + childPath);
+        }
     };
 
     //returns the root reference

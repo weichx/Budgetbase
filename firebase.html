@@ -8,22 +8,16 @@
         var root = 'https://dev-firebase.firebaseio.com/';
         var ref = new Budgetbase(root + 'here/we/go');
 
-        ref.parent().on('child_changed', function (s) {
-            //equal(s.name(), 'go', 'name should have been go');
-            console.log(s.name());
+        ref.set({
+            'child1':1,
+            'child2':2,
+            'child3':3
         });
 
-        ref.update({
-            'child1': {
-                'childofchild': 1
-            }
-        });
+        ref.somevar = 2;
+        var parent = ref.parent();
 
-        ref.update({
-            'child1': {
-                'other' : 3
-            }
-        });
+        var child = parent.child('go');
 
     </script>
 </head>

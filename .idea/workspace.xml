@@ -19,13 +19,13 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5353828">
+    <splitter split-orientation="horizontal" split-proportion="0.5295824">
       <split-first>
         <leaf>
           <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="6" column="44" selection-start="179" selection-end="179" vertical-scroll-proportion="-3.75">
+                <state line="17" column="43" selection-start="569" selection-end="569" vertical-scroll-proportion="-10.625">
                   <folding />
                 </state>
               </provider>
@@ -35,7 +35,9 @@
             <entry file="file://$PROJECT_DIR$/src/snapshot.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="68" column="0" selection-start="2348" selection-end="2348" vertical-scroll-proportion="0.0">
-                  <folding />
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -43,7 +45,16 @@
           <file leaf-file-name="reference_event_tests.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="613" column="0" selection-start="18948" selection-end="18948" vertical-scroll-proportion="0.8992161">
+                <state line="532" column="26" selection-start="16652" selection-end="16652" vertical-scroll-proportion="0.5177956">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="reference_query_test.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test/reference_query_test.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="21" column="2" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -52,7 +63,7 @@
           <file leaf-file-name="snapshot_tests.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/snapshot_tests.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="0" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
+                <state line="14" column="0" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -61,25 +72,20 @@
           <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/reference.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="301" column="2" selection-start="12293" selection-end="12293" vertical-scroll-proportion="0.0">
+                <state line="104" column="0" selection-start="4533" selection-end="4533" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
-                    <marker date="1377462389000" expanded="true" signature="881:12286" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="7579:9580" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="9669:9869" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="9765:9804" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="9876:10041" placeholder="//..." />
-                    <marker date="1377462389000" expanded="true" signature="10065:10364" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="10708:11546" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="11078:11115" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="11620:11668" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="11733:11767" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="11836:11872" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="11953:12290" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="12021:12217" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="12106:12181" placeholder="{...}" />
-                    <marker date="1377462389000" expanded="true" signature="12223:12284" placeholder="{...}" />
+                    <marker date="1377473498000" expanded="true" signature="230:502" placeholder="{...}" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="budgetbase.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="30" column="0" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -97,10 +103,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/reference.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="247" column="59" selection-start="10498" selection-end="10498" vertical-scroll-proportion="0.0">
+                <state line="279" column="32" selection-start="11765" selection-end="11765" vertical-scroll-proportion="0.6718925">
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -111,25 +117,16 @@
           <file leaf-file-name="reference_basic_tests.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/reference_basic_tests.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="3" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
+                <state line="29" column="46" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="firebase.html" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="firebase.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/firebase.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="29" column="6" selection-start="707" selection-end="707" vertical-scroll-proportion="0.4931973">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="budgetbase.js" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="15" column="0" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
+                <state line="20" column="0" selection-start="507" selection-end="507" vertical-scroll-proportion="-12.5">
                   <folding />
                 </state>
               </provider>
@@ -151,14 +148,15 @@
         <option value="$PROJECT_DIR$/qunit.js" />
         <option value="$PROJECT_DIR$/test/tests.js" />
         <option value="$PROJECT_DIR$/src/event_node.js" />
-        <option value="$PROJECT_DIR$/test/snapshot_tests.js" />
-        <option value="$PROJECT_DIR$/test/reference_basic_tests.js" />
-        <option value="$PROJECT_DIR$/src/snapshot.js" />
-        <option value="$PROJECT_DIR$/test.html" />
-        <option value="$PROJECT_DIR$/src/budgetbase.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/reference.js" />
+        <option value="$PROJECT_DIR$/test.html" />
+        <option value="$PROJECT_DIR$/test/snapshot_tests.js" />
+        <option value="$PROJECT_DIR$/test/reference_query_test.js" />
+        <option value="$PROJECT_DIR$/src/snapshot.js" />
         <option value="$PROJECT_DIR$/firebase.html" />
+        <option value="$PROJECT_DIR$/test/reference_basic_tests.js" />
+        <option value="$PROJECT_DIR$/src/budgetbase.js" />
+        <option value="$PROJECT_DIR$/src/reference.js" />
         <option value="$PROJECT_DIR$/test/reference_event_tests.js" />
       </list>
     </option>
@@ -480,9 +478,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="0" selection-start="715" selection-end="715" vertical-scroll-proportion="0.9768212">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="43" selection-start="569" selection-end="569" vertical-scroll-proportion="-10.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/snapshot_tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
+        <state line="14" column="0" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -494,30 +506,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
+    <entry file="file://$PROJECT_DIR$/firebase.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="44" selection-start="179" selection-end="179" vertical-scroll-proportion="-3.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="715" selection-end="715" vertical-scroll-proportion="0.9768212">
+        <state line="20" column="0" selection-start="507" selection-end="507" vertical-scroll-proportion="-12.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/reference_basic_tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
+        <state line="29" column="46" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/reference_query_test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="2" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -525,44 +530,32 @@
     <entry file="file://$PROJECT_DIR$/src/snapshot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="0" selection-start="2348" selection-end="2348" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reference.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="301" column="2" selection-start="12293" selection-end="12293" vertical-scroll-proportion="0.0">
+        <state line="104" column="0" selection-start="4533" selection-end="4533" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1377462389000" expanded="true" signature="881:12286" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="7579:9580" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="9669:9869" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="9765:9804" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="9876:10041" placeholder="//..." />
-            <marker date="1377462389000" expanded="true" signature="10065:10364" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="10708:11546" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="11078:11115" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="11620:11668" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="11733:11767" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="11836:11872" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="11953:12290" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="12021:12217" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="12106:12181" placeholder="{...}" />
-            <marker date="1377462389000" expanded="true" signature="12223:12284" placeholder="{...}" />
+            <marker date="1377473498000" expanded="true" signature="230:502" placeholder="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/firebase.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="6" selection-start="707" selection-end="707" vertical-scroll-proportion="0.4931973">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="613" column="0" selection-start="18948" selection-end="18948" vertical-scroll-proportion="0.8992161">
+        <state line="532" column="26" selection-start="16652" selection-end="16652" vertical-scroll-proportion="0.5177956">
           <folding />
         </state>
       </provider>
