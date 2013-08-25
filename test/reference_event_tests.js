@@ -543,6 +543,51 @@ test('calling set with an array will convert the array to an object and add each
     ref.set(array);
     expect(3);
 });
+
+test('updating an object in tree with another object that has additional attributes', function() {
+    var ref = new Budgetbase('t/e/s/t');
+
+        var initial = {
+            'a':1,
+            'b':2
+        };
+        var end = {
+            'a':2,
+            'c':3
+        };
+
+    ref.set(initial);
+
+    ref.on('child_added', function (s) {
+        equal(s.name(), 'c', 'should have added c');
+    });
+
+    ref.on('child_removed', function (s) {
+        equal(s.name(), 'b', 'should have removed b');
+    });
+
+    ref.on("child_changed", function(s) {
+          ok(true);
+    }) ;
+
+    ref.child('a').on('value', function (s) {
+        equal(s.name(), 'a', 'should have changed value of a');
+    });
+
+    ref.child('c').on('child_added', function(s) {
+        equal(s.name(), 'c', 'should have added c' );
+    })
+
+    ref.on('value', function (s) {
+        equal(s.name(), 't');
+    });
+
+    ref.update(end);
+    expect(3);
+});
+
+test('updating')
+
 //test update
 //add more child_changed tests
 //make on and once act as queries
