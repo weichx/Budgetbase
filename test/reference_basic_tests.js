@@ -10,7 +10,7 @@ test('A reference can be created through Budgetbase()', function () {
 });
 
 test('A reference should have a properly split (and private) url', function () {
-    var ref = new Budgetbase('one/two/three');
+    var ref = new Budgetbase('one/two/three')._storeRef;
     equal(ref._splitUrl[0], 'one', 'splitUrl[0] should be one, was ' + ref._splitUrl[0]);
     equal(ref._splitUrl[1], 'two', 'splitUrl[1] should be two, was ' + ref._splitUrl[1]);
     equal(ref._splitUrl[2], 'three', 'splitUrl[2] should be three, was ' + ref._splitUrl[2]);

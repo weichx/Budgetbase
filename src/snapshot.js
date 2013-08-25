@@ -66,7 +66,6 @@ Snapshot.prototype = {
             }
         }
     },
-
     //returns the reference that corresponds to this data location
     ref:function(){
         return new Budgetbase(this._path);

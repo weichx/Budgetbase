@@ -11,7 +11,9 @@
         /*
         var Budgetbase = Firebase;
         var root = 'https://dev-firebase.firebaseio.com/';
+        var ref = new Budgetbase(root + 'here/we/go');
 
+<<<<<<< HEAD
         var ref = new Budgetbase(root + 'one');
 
         ref.on('child_added', function(s){
@@ -66,6 +68,18 @@
 
         console.log("____________");
         ref.update(end);
+=======
+        ref.set({
+            'child1':1,
+            'child2':2,
+            'child3':3
+        });
+
+        ref.somevar = 2;
+        var parent = ref.parent();
+
+        var child = parent.child('go');
+>>>>>>> 8d47ba0479a04ea7e6ba539d6459a84b9a8bb190
 
     </script>
 

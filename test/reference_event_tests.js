@@ -229,8 +229,14 @@ test('calling remove on a location in the tree should remove it and call value o
     });
     var ref = new Budgetbase('one/two/three');
     ref.set('hello');
+    var called = 0;
+    //since on acts as a query we need to make sure we only check for null the 2nd time this
+    //callback is invoked.
     ref.on('value', function (snapshot) {
-        ok(snapshot.val() === null, 'should have hit this');
+        if (called === 1) {
+            ok(snapshot.val() === null, 'should have hit this');
+        }
+        called++;
     });
     ref.remove();
     var store = Budgetbase.getStore();
@@ -244,12 +250,14 @@ test('calling remove on a location in the tree should fire child_removed its par
     var fn = function (snapshot) {
         ok(snapshot)
     };
-    ref.parent().on('child_removed', fn);
-    ref.parent().parent().on('child_removed', fn);
-    ref.parent().parent().parent().on('child_removed', fn);
+
+    ref.parent().on('child_added', fn);
+    ref.parent().parent().on('child_added', fn);
+    ref.parent().parent().parent().on('child_added', fn);
     ref.set('hello');
     ref.remove();
     expect(3);
+
 });
 
 test('calling set with a primitive on an empty location in the tree should fire child_added on all ancestors execpt parent', function () {
@@ -286,8 +294,12 @@ test('calling remove on a location not in the tree should not fire value events 
 test('calling remove on a location should fire value with a null snapshot.val() on the location if it is in the tree', function () {
     var ref = new Budgetbase('im/not/here');
     ref.set('not null');
+    var called = 0;
     ref.on('value', function (snapshot) {
-        ok(snapshot.val() === null);
+        if (called > 0) {
+            ok(snapshot.val() === null);
+        }
+        called++;
     });
     ref.remove();
     expect(1);
@@ -314,8 +326,13 @@ test('setting a value that was an object to a primitive will call value only onc
         'we':2,
         'can':3
     });
+    //value is called once to get populated, so check for this via called
+    var called = 0;
     ref.on('value', function (snapshot) {
-        ok(snapshot);
+        if (called > 0) {
+            ok(snapshot);
+        }
+        called++;
     });
     ref.set('you betcha');
     expect(1);
@@ -338,8 +355,12 @@ test('setting a location that was a primitive to an object will call child_added
 test('setting a location that was a primitive to an object will call value only once', function () {
     var ref = new Budgetbase('we/can/do/it');
     ref.set('okie dokey');
+    var called = 0;
     ref.on('value', function (snapshot) {
-        ok(snapshot);
+        if (called > 0) {
+            ok(snapshot);
+        }
+        called++;
     });
     ref.set({
         one:1,
@@ -363,7 +384,7 @@ test('setting a location that is already a primitive to another primitive should
     expect(0);
 });
 
-test('setting a location already occuipied by an object to another object with different keys should call child removed on old keys, child added on new ones and value only once', function () {
+test('setting a location already occupied by an object to another object with different keys should call child removed on old keys, child added on new ones and value only once', function () {
     var ref = new Budgetbase('t/e/s/t');
     var numbers = {
         '1':1,
@@ -380,22 +401,30 @@ test('setting a location already occuipied by an object to another object with d
     var calledRemoved = 0;
     ref.set(numbers);
 
+    var addedBuffer = 0;
     ref.on('child_added', function (snapshot) {
-        calledAdded++;
+        addedBuffer++;
+        if (addedBuffer > 3) {
+            calledAdded++;
+        }
     });
 
     ref.on('child_removed', function (snapshot) {
         calledRemoved++;
     });
 
+    var valueBuffer = 0;
     ref.on('value', function (snapshot) {
-        calledValue++;
+        if (valueBuffer > 0) {
+            calledValue++;
+        }
+        valueBuffer++;
     });
 
     ref.set(letters);
-    equal(1, calledValue, 'should have only called value once');
-    equal(3, calledAdded, 'should have called child added thrice');
-    equal(3, calledRemoved, 'should have called child removed thrice');
+    equal(calledValue, 1, 'should have only called value once');
+    equal(calledAdded, 3, 'should have called child added thrice');
+    equal(calledRemoved, 3, 'should have called child removed thrice');
 
 });
 
@@ -410,18 +439,30 @@ test('setting a location to a different object with overlapping keys should remo
         'c':3
     };
     ref.set(initial);
+    var addedBuffer = 0;
     ref.on('child_added', function (s) {
-        equal(s.name(), 'c', 'should have added c');
+        addedBuffer++;
+        if (addedBuffer > 2) {
+            equal(s.name(), 'c', 'should have added c');
+        }
     });
     ref.on('child_removed', function (s) {
         equal(s.name(), 'b', 'should have removed b');
     });
+    var valueBuffer1 = 0;
     ref.child('a').on('value', function (s) {
-        equal(s.name(), 'a', 'should have changed value of a');
+        valueBuffer1++;
+        if (valueBuffer1 > 1) {
+            equal(s.name(), 'a', 'should have changed value of a');
+        }
     });
 
+    var valueBuffer2 = 0;
     ref.on('value', function (s) {
-        equal(s.name(), 't');
+        valueBuffer2++;
+        if (valueBuffer2 > 1) {
+            equal(s.name(), 't');
+        }
     });
 
     ref.set(end);
@@ -490,9 +531,9 @@ test('calling set on a location that is in the tree will fire child_changed even
 test('calling push with no parameters on a location will return a child reference for that location', function () {
     var ref = new Budgetbase('test');
     var push = ref.push();
-    equal(push._data, null, 'should have null data pointer');
-    equal(push._parent, ref, 'should have parent of ref');
-    ok(push._name, 'name should be a valid value');
+    strictEqual(push._storeRef._data, null, 'should have null data pointer');
+    equal(push._storeRef._parent, ref._storeRef, 'should have parent of ref');
+    ok(push.name(), 'name should be a valid value');
 });
 
 test('calling set on a push ref will set its value and fire a child added event on the parent', function () {
@@ -511,32 +552,34 @@ test('calling set on a push ref will set its value and fire a child added event 
 test('calling push with a value parameter will add a child to the parent and fire child_added', function () {
     var ref = new Budgetbase('test');
     ref.on('child_added', function (s) {
-        equal(s.val(), 'hello budgetbase');
+        ok(s);
     });
     ref.push('hello budgetbase');
-    expect(1);
+    ref.push('hello again');
+    expect(2);
 });
 
-test('calling push with a null value will not add a child to the parent', function(){
+test('calling push with a null value will not add a child to the parent', function () {
     var ref = new Budgetbase('test');
-    ref.on('child_added', function(s){
+    ref.on('child_added', function (s) {
         ok(false);
     });
     ref.push(null);
     expect(0);
 });
 
-test('calling set(somevalue) on a location not in the tree will trigger a child_changed on that locations ancestors', function(){
+test('calling set(somevalue) on a location not in the tree will not trigger a child_changed on that locations ancestors', function () {
     var ref = new Budgetbase('here/we/go');
-    ref.parent().on('child_changed', function(s){
-        console.log(s.val());
+    ref.parent().on('child_changed', function (s) {
+        equal(s.name(), 'go', 'name should have been go');
     });
     ref.set('somevalue');
+    expect(0);
 });
 
-test('calling set with an array will convert the array to an object and add each key as a child', function(){
+test('calling set with an array will convert the array to an object and add each key as a child', function () {
     var ref = new Budgetbase('test');
-    ref.on('child_added', function(s){
+    ref.on('child_added', function (s) {
         ok(s);
     });
     var array = ['this', 'is', 'awesome'];
@@ -546,17 +589,19 @@ test('calling set with an array will convert the array to an object and add each
 
 
 
+
 test('updating an object in tree with another object that has additional attributes', function() {
+
     var ref = new Budgetbase('t/e/s/t');
 
-        var initial = {
-            'a':1,
-            'b':2
-        };
-        var end = {
-            'a':2,
-            'c':3
-        };
+    var initial = {
+        'a':1,
+        'b':2
+    };
+    var end = {
+        'a':2,
+        'c':3
+    };
 
     ref.set(initial);
 
@@ -564,26 +609,11 @@ test('updating an object in tree with another object that has additional attribu
         equal(s.name(), 'c', 'should have added c');
     });
 
+
     ref.on("child_changed", function(s) {
-          ok(true);
+
     });
 
-    ref.child('a').on('value', function (s) {
-        equal(s.name(), 'a', 'should have changed value of a');
-    });
-
-    ref.child('c').on('child_added', function(s) {
-        equal(s.name(), 'c', 'should have added c' );
-    });
-
-    ref.on('value', function (s) {
-        equal(s.name(), 't');
-    });
-
-    ref.update(end);
-
-
-    expect(3);
 });
 
 test('calling update on an object whose children are also ', function() {
@@ -628,6 +658,15 @@ test('calling update on an object whose children are also ', function() {
 
     expect(2);
 })  ;
+
+
+test('calling update on a location with a primitive will throw an exception', function () {
+    var ref = new Budgetbase('one');
+    throws(function () {
+        ref.update('hello');
+    });
+    expect(1);
+})    ;
 
 
 
