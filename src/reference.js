@@ -150,7 +150,7 @@ Reference.prototype = {
         } else {
             console.log("set: two primitives");
             if(oldValue === null || oldValue === undefined) {
-                this._fireEvent('child_added', this._splitUrl, this._data);
+//                this._fireEvent('child_added', this._splitUrl, this._data);
             }
             //new and old are primitives
         }
@@ -169,10 +169,15 @@ Reference.prototype = {
     },
 
     _update:function (value) {
+
         console.log("updating");
-        if (value === null || value === undefined) {
-            this.remove();
-            return;
+
+        if(typeof value !== 'object' || value === null ) {
+            throw new Error("Budgetbase.update failed: First argument must be an object containing the children to replace. ");
+        }
+
+        if(value === undefined) {
+            throw new Error("Budgetbase.update failed: Was called with 0 arguments. Expects at least 1.");
         }
 
         //we dont allow arrays, so process the value if it is an array and convert it to an object who's keys are
@@ -191,8 +196,11 @@ Reference.prototype = {
         parent._willSetChild(this._name, value);
 
         var oldValue = this._data;
+
         var newValueIsObject = typeof value === 'object' && value !== null;
         var oldValueIsObject = typeof oldValue === 'object' && oldValue !== null;
+
+
         var child;
 
         if(oldValueIsObject && newValueIsObject) {
@@ -203,7 +211,7 @@ Reference.prototype = {
             }
         }
         else if(newValueIsObject) {
-            conole.log("new object");
+            console.log("new object");
             for (var k in value) {
                 child = this._addOrRetrieveChild(k);
                 child._set(value[k]);

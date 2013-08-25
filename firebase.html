@@ -22,9 +22,10 @@
 
     </script>
     <script>
+
         var Budgetbase = Firebase;
         var root = 'https://dev-firebase.firebaseio.com/';
-        var ref = new Budgetbase(root + 't/e/s/t');
+        var ref = new Budgetbase(root + 'one');
 
         var fn_added = function(snapshot){
             console.log('child_added');
@@ -42,6 +43,7 @@
             console.log('should have changed the value of a');
         }
 
+
         var initial = {
             'a':1,
             'b':2
@@ -56,12 +58,70 @@
 
         ref.on('child_added', fn_added);
         ref.on('child_removed', fn_removed);
-        ref.on('child_changed', fn_changed)
-
+        ref.on('child_changed', fn_changed);
         ref.child('a').on('value', fn_value);
 
-
+        console.log("after");
         ref.update(end);
+
+    </script>
+     <script>
+         var Budgetbase = Firebase;
+         var root = 'https://burst.firebaseio.com/';
+
+         var ref = new Budgetbase(root + 'one');
+
+         ref.on('value', function (s) {
+
+         });
+         ref.on('child_changed', function (s) {
+
+         });
+
+         ref.on('child_added', function (s) {
+             console.log('child added', s.name());
+         });
+
+         var initial = {
+             'a':1,
+             'b':2
+         };
+
+         var end = {
+             'a':2,
+             'c' :3
+         };
+
+          ref.set(initial);
+
+         console.log('-----');
+
+         ref.update(end);
+     </script>
+
+    <script>
+        var Budgetbase = Firebase;
+        var root = 'https://burst.firebaseio.com';
+
+        var ref = new Budgetbase(root + 'one');
+
+        ref.on('value', function(s) {
+
+        });
+
+
+
+    </script>
+    <script>
+
+        var Budgetbase = Firebase;
+        var root = 'https://dev-firebase.firebaseio.com/';
+        var ref = new Budgetbase(root = "one/two");
+        ref.on('child_added', function(){
+            console.log('child_added');
+        });
+        ref.set('hello');
+
     </script>
 </head>
 <body>
