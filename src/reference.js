@@ -156,7 +156,7 @@ Reference.prototype = {
     //sets a value at this reference location, invoking events as needed.
     set:function (value) {
         //only fire child_changed events if the location was previously null.
-        var shouldFireChanges = true; //this._data !== null;
+        var shouldFireChanges = this._data !== null;
         this._set(value);
         if (shouldFireChanges) {
             this._didChangeChild(this._name, this._data);
