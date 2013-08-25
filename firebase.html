@@ -6,18 +6,11 @@
     <script>
         var Budgetbase = Firebase;
         var root = 'https://dev-firebase.firebaseio.com/';
-        var ref = new Budgetbase(root + 't/e/s/t');
-        var fn = function(snapshot){
-            console.log('child_added');
-        }
-        ref.on('child_changed', fn);
-        ref.parent().on('child_changed', fn);
-        ref.parent().parent().on('child_changed', fn);
-        ref.parent().parent().parent().on('child_changed', fn);
-        ref.set('ok');
-        ref.set('kk');
-        ref.set('hi');
-
+        var ref = new Budgetbase(root + 'here/we/go');
+        ref.parent().on('child_changed', function(s){
+            console.log(s.val());
+        });
+        ref.push('somevalue');
     </script>
 </head>
 <body>
