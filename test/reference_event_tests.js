@@ -511,10 +511,11 @@ test('calling set on a push ref will set its value and fire a child added event 
 test('calling push with a value parameter will add a child to the parent and fire child_added', function () {
     var ref = new Budgetbase('test');
     ref.on('child_added', function (s) {
-        equal(s.val(), 'hello budgetbase');
+        ok(s);
     });
     ref.push('hello budgetbase');
-    expect(1);
+    ref.push('hello again');
+    expect(2);
 });
 
 test('calling push with a null value will not add a child to the parent', function(){

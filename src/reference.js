@@ -264,8 +264,13 @@ Reference.prototype = {
         if (value === undefined) {
             return child;
         }
+        //if this node does not exist, adding a child will fire child_added for us.
+        //if this node does not exist, we need to fire our own child_added event.
+        var shouldFireAddChild = this._data !== null;
         child.set(value);
-        this._fireEvent('child_added', child._splitUrl, value);
+        if(shouldFireAddChild){
+            this._fireEvent('child_added', child._splitUrl, value);
+        }
         //ensures consistent return points
         return undefined;
     },
