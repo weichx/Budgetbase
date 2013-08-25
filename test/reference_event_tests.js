@@ -460,6 +460,32 @@ test('setting a location to a an object that contains other objects will fire of
 
 });
 
+test('calling set on a location not in the tree will not fire child_changed events on any parents.', function(){
+    var ref = new Budgetbase('t/e/s/t');
+    var fn = function(snapshot){
+        ok(false);
+    };
+    ref.on('child_changed', fn);
+    ref.parent().on('child_changed', fn);
+    ref.parent().parent().on('child_changed', fn);
+    ref.parent().parent().parent().on('child_changed', fn);
+    ref.set('ok');
+    expect(0);
+});
+
+test('calling set on a location that is in the tree will fire child_changed events on all ancestors', function(){
+    var ref = new Budgetbase('t/e/s/t');
+    var fn = function(snapshot){
+        ok(true);
+    };
+    ref.on('child_changed', fn);
+    ref.parent().on('child_changed', fn);
+    ref.parent().parent().on('child_changed', fn);
+    ref.parent().parent().parent().on('child_changed', fn);
+    ref.set('ok');
+    ref.set('hi');
+    expect(4);
+});
 //test update
 //make on and once act as queries
 //todo test event order, but wait till all 6 events are implemented to do this

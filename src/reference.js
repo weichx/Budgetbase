@@ -71,8 +71,10 @@ Reference.prototype = {
 
     _didChangeChild:function (childKey, childData) {
         var parent = this._parent;
-        parent._fireEvent('child_changed', childKey, childData);
-        parent._didChangeChild(this._name, this._data);
+        if (parent) {
+            parent._fireEvent('child_changed', childKey, childData);
+            parent._didChangeChild(this._name, this._data);
+        }
     },
 
     //subscribes the reference to events. we could check that the event is valid, but we dont for now.
@@ -105,21 +107,21 @@ Reference.prototype = {
 
         if (oldValueIsObject && newValueIsObject) {
             for (var x in oldValue) {
-                if (!value[x]) { //remove old values not in new value
+                if (value[x] === undefined) { //remove old values not in new value
                     child = this._addOrRetrieveChild(x);
                     this._fireEvent('child_removed', child._splitUrl, oldValue[x]);
                 } else {    //update old values still in new value
                     child = this._addOrRetrieveChild(x);
-                    child.set(value[x]);
+                    child._set(value[x]);
                     //manually fire child_changed event, the upwards calls will happen in set() so we only handle
                     //downwards child_changed calls here.
                     this._fireEvent('child_changed', child._splitUrl, value[x]);
                 }
             }
             for (var z in value) {
-                if (!oldValue[z]) {  //add children in new value not in old value
+                if (oldValue[z] === undefined) {  //add children in new value not in old value
                     child = this._addOrRetrieveChild(z);
-                    child.set(value[z]);
+                    child._set(value[z]);
                     this._fireEvent('child_added', child._splitUrl, value[z]);
                 }
             }
@@ -132,7 +134,7 @@ Reference.prototype = {
         } else if (newValueIsObject) {
             for (var k in value) {
                 child = this._addOrRetrieveChild(k);
-                child.set(value[k]);
+                child._set(value[k]);
                 this._fireEvent('child_added', child._splitUrl, value[k]);
             }
         } else {
@@ -143,8 +145,12 @@ Reference.prototype = {
 
     //sets a value at this reference location, invoking events as needed.
     set:function (value) {
+        //only fire child_changed events if the location was previously null.
+        var shouldFireChanges = this._data !== null;
         this._set(value);
-        this._didChangeChild(this._name, this._data);
+        if (shouldFireChanges) {
+            this._didChangeChild(this._name, this._data);
+        }
         //network data: url of changes, call update on top most root that was affected
     },
 
@@ -187,5 +193,4 @@ Reference.prototype = {
             return this._addOrRetrieveChild(key);
         }
     }
-
 };

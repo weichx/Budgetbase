@@ -13,6 +13,7 @@ var Budgetbase;
         }
         return ref;
     };
+
     //returns the root reference
     Budgetbase.__getRoot = function () {
         return root;
