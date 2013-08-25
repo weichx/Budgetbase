@@ -586,8 +586,6 @@ test('updating an object in tree with another object that has additional attribu
     expect(3);
 });
 
-test('updating')
-
 //test update
 //add more child_changed tests
 //make on and once act as queries
