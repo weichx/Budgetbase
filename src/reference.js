@@ -150,7 +150,7 @@ Reference.prototype = {
         } else {
             console.log("set: two primitives");
             if(oldValue === null || oldValue === undefined) {
-                this._fireEvent('child_added', this._splitUrl, this._data);
+           //     this._fireEvent('child_added', this._splitUrl, this._data);
             }
             //new and old are primitives
         }
@@ -203,7 +203,7 @@ Reference.prototype = {
             }
         }
         else if(newValueIsObject) {
-            conole.log("new object");
+            console.log("new object");
             for (var k in value) {
                 child = this._addOrRetrieveChild(k);
                 child._set(value[k]);
@@ -257,6 +257,7 @@ Reference.prototype = {
             return child;
         }
         child.set(value);
+        this._fireEvent('child_added', child._splitUrl, value);
         //ensures consistent return points
         return undefined;
     },

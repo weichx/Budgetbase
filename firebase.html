@@ -4,64 +4,16 @@
     <title></title>
     <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
     <script>
-
         var Budgetbase = Firebase;
         var root = 'https://dev-firebase.firebaseio.com/';
 
-        var ref = new Budgetbase(root + 't/e/s/t');
-        var fn = function(snapshot){
-            console.log('child_added');
-        }
-        ref.on('child_changed', fn);
-        ref.parent().on('child_changed', fn);
-        ref.parent().parent().on('child_changed', fn);
-        ref.parent().parent().parent().on('child_changed', fn);
-        ref.set('ok');
-        ref.set('kk');
-        ref.set('hi');
+        var ref = new Budgetbase(root + 'three');
 
-    </script>
-    <script>
-        var Budgetbase = Firebase;
-        var root = 'https://dev-firebase.firebaseio.com/';
-        var ref = new Budgetbase(root + 't/e/s/t');
+        ref.on('child_added', function(s){
+            console.log(s.name());
+        });
 
-        var fn_added = function(snapshot){
-            console.log('child_added');
-        }
-
-        var fn_removed = function(snapshot) {
-            console.log('child_removed');
-        }
-
-        var fn_changed = function(snapshot) {
-            console.log('child_changed');
-        }
-
-        var fn_value = function(snapshot ) {
-            console.log('should have changed the value of a');
-        }
-
-        var initial = {
-            'a':1,
-            'b':2
-        };
-
-        var end = {
-            'a':2,
-            'c':3
-        };
-
-        ref.set(initial);
-
-        ref.on('child_added', fn_added);
-        ref.on('child_removed', fn_removed);
-        ref.on('child_changed', fn_changed)
-
-        ref.child('a').on('value', fn_value);
-
-
-        ref.update(end);
+        ref.update({'hcild': 1});
     </script>
 </head>
 <body>

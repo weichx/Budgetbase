@@ -576,7 +576,7 @@ test('updating an object in tree with another object that has additional attribu
 
     ref.child('c').on('child_added', function(s) {
         equal(s.name(), 'c', 'should have added c' );
-    })
+    });
 
     ref.on('value', function (s) {
         equal(s.name(), 't');
@@ -586,7 +586,6 @@ test('updating an object in tree with another object that has additional attribu
     expect(3);
 });
 
-test('updating')
 
 //test update
 //add more child_changed tests
