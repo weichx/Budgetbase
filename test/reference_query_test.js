@@ -72,3 +72,4 @@ test('calling once will only ever fire an event one time', function () {
     ref.set('hello');
     expect(1);
 });
+//todo add test for snapshot name being what is should

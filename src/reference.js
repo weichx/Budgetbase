@@ -104,13 +104,12 @@ Reference.prototype = {
                 if (once) {
                     //todo when priority works this should be called on top priority child
                     for (var z in data) {
-                        callback.call((context || window), new Snapshot(this._splitUrl, data[z]));
+                        callback.call((context || window), new Snapshot(this._splitUrl.concat([z]), data[z]));
                         return;
                     }
-                } else {
-                    for (var k in data) {
-                        callback.call((context || window), new Snapshot(this._splitUrl, data[k]));
-                    }
+                }
+                for (var k in data) {
+                    callback.call((context || window), new Snapshot(this._splitUrl.concat([k]), data[k]));
                 }
             }
         }
@@ -176,7 +175,9 @@ Reference.prototype = {
                 this._fireEvent('child_removed', child._splitUrl, oldValue[l]);
             }
         } else if (newValueIsObject) {
+
             console.log("new value is object");
+
             for (var k in value) {
                 console.log("k in value");
                 child = this._addOrRetrieveChild(k);
@@ -242,11 +243,13 @@ Reference.prototype = {
         if (oldValueIsObject && newValueIsObject) {
             console.log("two objects");
             for (var z in value) {
+
                 if(typeof z === 'object') {
                     this._update(value[z]);
                 }
                 child = this._addOrRetrieveChild(z);
                 child._set(value[z]);
+
             }
         }
         else if (newValueIsObject) {

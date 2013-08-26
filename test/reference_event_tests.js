@@ -588,9 +588,7 @@ test('calling set with an array will convert the array to an object and add each
 });
 
 
-
-
-test('updating an object in tree with another object that has additional attributes', function() {
+test('updating an object in tree with another object that has additional attributes', function () {
 
     var ref = new Budgetbase('t/e/s/t');
 
@@ -612,32 +610,33 @@ test('updating an object in tree with another object that has additional attribu
     expect(2);
 });
 
-test('calling update on an object whose children are nested objects ', function() {
+test('calling update on an object whose children are nested objects', function () {
 
     var ref = new Budgetbase("one");
 
     var initial = {
 
-        'b': {
-            "b1" : 2,
-            "b2" : 3
+        'b':{
+            "b1":2,
+            "b2":3
         }
-    }
+    };
 
     var end = {
 
-        'a' : {
-            'b3' : 4,
-            'b4' : 5
+        'a':{
+            'b3':4,
+            'b4':5
         },
 
         'c':4
-    }
+    };
 
     ref.set(initial);
 
-    ref.on('child_added', function(s) {
+    ref.on('child_added', function (s) {
         equal(s.name(), s.name(), "added: " + s.name());
+        console.log('child_added', s.name(), s.val());
     });
 
 
@@ -649,6 +648,7 @@ test('calling update on an object whose children are nested objects ', function(
 
     console.log(ref.child('c')._storeRef._data);
     console.log(ref.child('a').child('b4')._storeRef._data);
+
 
     expect(1);
 });

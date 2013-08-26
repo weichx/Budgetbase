@@ -24,7 +24,7 @@ var Budgetbase;
         },
 
         once:function (evtType, callback, context) {
-            this._storeRef.once(evtType, true, callback, context);
+            this._storeRef.on(evtType, true, callback, context);
         },
 
         set:function (value) {
