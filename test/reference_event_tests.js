@@ -629,7 +629,6 @@ test('calling update on an object will trigger one child_added event per child a
         'c':4
     };
     ref.set(initial);
-    var buffer = 0;
     var aAdded = false;
     var cAdded = false;
     ref.on('child_added', function (s) {
@@ -642,6 +641,32 @@ test('calling update on an object will trigger one child_added event per child a
     ref.update(end);
     ok(aAdded);
     ok(cAdded);
+});
+
+test('calling update on a location with object data will trigger child changed events on the parent', function () {
+    var ref = new Budgetbase("one");
+
+    var initial = {
+        'b':{
+            "b1":2,
+            "b2":3
+        }
+    };
+
+    var end = {
+        'a':{
+            'b3':4,
+            'b4':5
+        },
+        'c':4
+    };
+    ref.set(initial);
+    ref.parent().on('child_changed', function(s){
+        console.log(s);
+        equal(s.name(), 'one', 'should trigger child_changed on parent');
+    });
+    ref.update(end);
+    expect(1);
 });
 
 
