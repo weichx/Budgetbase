@@ -19,7 +19,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5295824">
+    <splitter split-orientation="horizontal" split-proportion="0.47795823">
       <split-first>
         <leaf>
           <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
@@ -45,16 +45,16 @@
           <file leaf-file-name="reference_event_tests.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="610" column="0" selection-start="18926" selection-end="18926" vertical-scroll-proportion="0.0">
+                <state line="638" column="52" selection-start="19350" selection-end="19350" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="reference_query_test.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="reference_query_test.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test/reference_query_test.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="73" column="3" selection-start="2005" selection-end="2005" vertical-scroll-proportion="0.0">
+                <state line="74" column="54" selection-start="2060" selection-end="2060" vertical-scroll-proportion="0.9138921">
                   <folding />
                 </state>
               </provider>
@@ -72,37 +72,60 @@
           <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/reference.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="118" column="45" selection-start="5036" selection-end="5036" vertical-scroll-proportion="0.0">
+                <state line="123" column="40" selection-start="5353" selection-end="5353" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
-                    <marker date="1377476591000" expanded="true" signature="230:502" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="681:900" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="756:858" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="907:1057" placeholder="//..." />
-                    <marker date="1377476591000" expanded="true" signature="1107:1549" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="1189:1543" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="1308:1533" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="1556:1699" placeholder="//..." />
-                    <marker date="1377476591000" expanded="true" signature="1749:2477" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="1818:2471" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="2181:2249" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="2630:3393" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="2836:2961" placeholder="//..." />
-                    <marker date="1377476591000" expanded="true" signature="2993:3248" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="3254:3387" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="3447:3650" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="3504:3644" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="12864:12910" placeholder="{...}" />
-                    <marker date="1377476591000" expanded="true" signature="12864:12910" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="230:502" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="551:13260" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="681:900" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="756:858" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="907:1057" placeholder="//..." />
+                    <marker date="1377477438000" expanded="true" signature="1107:1549" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="1189:1543" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="1308:1533" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="1556:1699" placeholder="//..." />
+                    <marker date="1377477438000" expanded="true" signature="1749:2477" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="1818:2471" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="2181:2249" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="2630:3393" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="2836:2961" placeholder="//..." />
+                    <marker date="1377477438000" expanded="true" signature="2993:3248" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="3254:3387" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="3447:3650" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="3504:3644" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="4930:8063" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="6111:7127" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="6166:6569" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="6223:6260" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="6202:6437" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="6506:6860" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="6565:6797" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="7236:7469" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="7267:7431" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="7268:7566" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="7299:7552" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="7728:7979" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="7670:7764" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="8121:8413" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="8296:8366" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="8581:10620" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="8714:8745" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="8859:8933" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="9036:9205" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="9058:9198" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="9912:10102" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="9894:9994" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="13207:13253" placeholder="{...}" />
+                    <marker date="1377477438000" expanded="true" signature="13207:13253" placeholder="{...}" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="budgetbase.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="budgetbase.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="33" column="33" selection-start="984" selection-end="984" vertical-scroll-proportion="0.55995476">
+                <state line="33" column="33" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -112,10 +135,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="reference.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/reference.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="115" column="0" selection-start="4880" selection-end="4880" vertical-scroll-proportion="0.7894737">
+                <state line="181" column="0" selection-start="8096" selection-end="8096" vertical-scroll-proportion="0.50391936">
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -135,8 +158,11 @@
           <file leaf-file-name="firebase.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/firebase.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="21" selection-start="474" selection-end="474" vertical-scroll-proportion="-10.625">
-                  <folding />
+                <state line="86" column="10" selection-start="1789" selection-end="1789" vertical-scroll-proportion="-10.625">
+                  <folding>
+                    <marker date="1377476684000" expanded="true" signature="1435:1693" placeholder="{&quot;child1&quot;: 1...}" />
+                    <marker date="1377476684000" expanded="true" signature="1784:1799" placeholder="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -162,11 +188,11 @@
         <option value="$PROJECT_DIR$/test/snapshot_tests.js" />
         <option value="$PROJECT_DIR$/src/snapshot.js" />
         <option value="$PROJECT_DIR$/test/reference_basic_tests.js" />
+        <option value="$PROJECT_DIR$/firebase.html" />
+        <option value="$PROJECT_DIR$/src/budgetbase.js" />
         <option value="$PROJECT_DIR$/test/reference_event_tests.js" />
         <option value="$PROJECT_DIR$/test/reference_query_test.js" />
-        <option value="$PROJECT_DIR$/firebase.html" />
         <option value="$PROJECT_DIR$/src/reference.js" />
-        <option value="$PROJECT_DIR$/src/budgetbase.js" />
       </list>
     </option>
   </component>
@@ -526,7 +552,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/firebase.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="21" selection-start="474" selection-end="474" vertical-scroll-proportion="-10.625">
+        <state line="86" column="10" selection-start="1789" selection-end="1789" vertical-scroll-proportion="-10.625">
+          <folding>
+            <marker date="1377476684000" expanded="true" signature="1435:1693" placeholder="{&quot;child1&quot;: 1...}" />
+            <marker date="1377476684000" expanded="true" signature="1784:1799" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="33" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -538,52 +574,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reference.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="45" selection-start="5036" selection-end="5036" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1377476591000" expanded="true" signature="230:502" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="681:900" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="756:858" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="907:1057" placeholder="//..." />
-            <marker date="1377476591000" expanded="true" signature="1107:1549" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="1189:1543" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="1308:1533" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="1556:1699" placeholder="//..." />
-            <marker date="1377476591000" expanded="true" signature="1749:2477" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="1818:2471" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="2181:2249" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="2630:3393" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="2836:2961" placeholder="//..." />
-            <marker date="1377476591000" expanded="true" signature="2993:3248" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="3254:3387" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="3447:3650" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="3504:3644" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="12864:12910" placeholder="{...}" />
-            <marker date="1377476591000" expanded="true" signature="12864:12910" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="610" column="0" selection-start="18926" selection-end="18926" vertical-scroll-proportion="0.0">
+        <state line="638" column="52" selection-start="19350" selection-end="19350" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/reference_query_test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="3" selection-start="2005" selection-end="2005" vertical-scroll-proportion="0.0">
+        <state line="74" column="54" selection-start="2060" selection-end="2060" vertical-scroll-proportion="0.9138921">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
+    <entry file="file://$PROJECT_DIR$/src/reference.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="33" selection-start="984" selection-end="984" vertical-scroll-proportion="0.55995476">
-          <folding />
+        <state line="181" column="0" selection-start="8096" selection-end="8096" vertical-scroll-proportion="0.50391936">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
