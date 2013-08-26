@@ -586,7 +586,3 @@ test('calling set with an array will convert the array to an object and add each
     ref.set(array);
     expect(3);
 });
-
-
-
-

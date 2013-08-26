@@ -78,7 +78,7 @@ Reference.prototype = {
     _didChangeChild:function (childKey, childData) {
         var parent = this._parent;
         if (parent) {
-            parent._fireEvent('child_changed', childKey, childData);
+            parent._fireEvent('child_changed', this._splitUrl.concat([childKey]), childData);
             parent._didChangeChild(this._name, this._data);
         }
     },
@@ -158,6 +158,7 @@ Reference.prototype = {
                     child._set(value[x]);
                     //manually fire child_changed event, the upwards calls will happen in set() so we only handle
                     //downwards child_changed calls here.
+                    console.log()
                     this._fireEvent('child_changed', child._splitUrl, value[x]);
                 }
             }
