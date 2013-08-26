@@ -636,7 +636,6 @@ test('calling update on an object whose children are nested objects', function (
 
     ref.on('child_added', function (s) {
         equal(s.name(), s.name(), "added: " + s.name());
-        console.log('child_added', s.name(), s.val());
     });
 
 
@@ -650,7 +649,7 @@ test('calling update on an object whose children are nested objects', function (
     console.log(ref.child('a').child('b4')._storeRef._data);
 
 
-    expect(1);
+    expect(3);
 });
 
 

@@ -239,17 +239,14 @@ Reference.prototype = {
 
 
         var child;
-
         if (oldValueIsObject && newValueIsObject) {
             console.log("two objects");
             for (var z in value) {
-
-                if(typeof z === 'object') {
-                    this._update(value[z]);
+                if (oldValue[z] === undefined) {  //add children in new value not in old value
+                    child = this._addOrRetrieveChild(z);
+                    child._set(value[z]);
+                    this._fireEvent('child_added', child._splitUrl, value[z]);
                 }
-                child = this._addOrRetrieveChild(z);
-                child._set(value[z]);
-
             }
         }
         else if (newValueIsObject) {
