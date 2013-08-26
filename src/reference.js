@@ -95,14 +95,13 @@ Reference.prototype = {
         }
 
         if (evtType === 'child_added') {
-            var children = this._data;
-            if (typeof children === 'object' && children !== null) {
-                for (var k in children) {
-                    callback.call((context || window), new Snapshot(this._splitUrl, children[k]));
+            data = this._data;
+            if (typeof data === 'object' && data !== null) {
+                for (var k in data) {
+                    callback.call((context || window), new Snapshot(this._splitUrl, data[k]));
                 }
             }
         }
-
     },
 
     //internal set function to handle upwards firing of child changed events. Without this we would have little control
@@ -275,6 +274,7 @@ Reference.prototype = {
         this._children[pushId] = child;
         //return the child if no arguments are supplied
         if (value === undefined) {
+            //get an empty reference and set its storeRef explicitly
             var budgetbaseRef = new Budgetbase('');
             budgetbaseRef._storeRef = child;
             return budgetbaseRef;
@@ -290,32 +290,8 @@ Reference.prototype = {
         return undefined;
     },
 
-    //returns the returns the url of the reference
-    url:function () {
-        return this._splitUrl.join('/');
-    },
-
-    //returns the name of this reference
-    name:function () {
-        return this._name;
-    },
-
-    //returns the parent of this reference
-    parent:function () {
-        return this._parent;
-    },
-
     //creates or retrieves a child of this reference
     child:function (key) {
-        var split = key.split('/');
-        if (split.length > 1) {
-            var child;
-            for (var i = 0, il = split.length; i < il; i++) {
-                child = this._addOrRetrieveChild(split[i]);
-            }
-            return child;
-        } else {
-            return this._addOrRetrieveChild(key);
-        }
+        return this._addOrRetrieveChild(key);
     }
 };

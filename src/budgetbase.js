@@ -4,16 +4,7 @@ var Budgetbase;
 
     var root = new Reference([], null);
 
-    //creates a new reference or finds an existing reference and retursn it.
-    Budgetbase2 = function (url) {
-        var splitUrl = url.split('/');
-        var ref = root;
-        for (var i = 0, il = splitUrl.length; i < il; i++) {
-            ref = ref._addOrRetrieveChild(splitUrl[i]);
-        }
-        return ref;
-    };
-
+    //creates a new reference or finds an existing reference and return
     Budgetbase = function (url) {
         var splitUrl = url.split('/');
         var ref = root;
@@ -22,6 +13,7 @@ var Budgetbase;
                 ref = ref._addOrRetrieveChild(splitUrl[i]);
             }
         }
+        //store ref is a pointer to a reference object.
         this._storeRef = ref;
     };
 
