@@ -606,14 +606,10 @@ test('updating an object in tree with another object that has additional attribu
     ref.set(initial);
 
     ref.on('child_added', function (s) {
-        equal(s.name(), 'c', 'should have added c');
+        equal(s.name(), s.name(), 'should have added: ' + s.name());
     });
 
-
-    ref.on("child_changed", function(s) {
-
-    });
-
+    expect(2);
 });
 
 test('calling update on an object whose children are nested objects ', function() {
@@ -641,13 +637,12 @@ test('calling update on an object whose children are nested objects ', function(
     ref.set(initial);
 
     ref.on('child_added', function(s) {
-        equal(s.name(), s.name(), "");
-        equal(s.name(), s.name(), "b4 is getting added");
+        equal(s.name(), s.name(), "added: " + s.name());
     });
 
 
     ref.on('child_changed', function(s) {
-        equal(s.name(), s.name(), "adding: " + s.name());
+        equal(s.name(), s.name(), "changed: " + s.name());
     });
 
     ref.update(end);
@@ -655,7 +650,7 @@ test('calling update on an object whose children are nested objects ', function(
     console.log(ref.child('c')._data);
     console.log(ref.child('a').child('b4')._data);
 
-    expect(2);
+    expect(1);
 });
 
 
@@ -665,7 +660,7 @@ test('calling update on a location with a primitive will throw an exception', fu
         ref.update('hello');
     });
     expect(1);
-})    ;
+});
 
 
 

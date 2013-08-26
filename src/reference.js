@@ -224,9 +224,9 @@ Reference.prototype = {
         if (oldValueIsObject && newValueIsObject) {
             console.log("two objects");
             for (var z in value) {
-                if(typeof z === 'object') {
-                    _update(value[z]);
-                }
+//                if(typeof z === 'object') {
+//                    _update(value[z]);
+//                }
                 child = this._addOrRetrieveChild(z);
                 child._set(value[z]);
             }
@@ -284,10 +284,13 @@ Reference.prototype = {
             budgetbaseRef._storeRef = child;
             return budgetbaseRef;
         }
-
-        child._set(value);
-        this._fireEvent('child_added', child._splitUrl, value);
-
+        //if this node does not exist, adding a child will fire child_added for us.
+        //if this node does not exist, we need to fire our own child_added event.
+        var shouldFireAddChild = this._data !== null;
+        child.set(value);
+        if (shouldFireAddChild) {
+            this._fireEvent('child_added', child._splitUrl, value);
+        }
         //ensures consistent return points
         return undefined;
     },
