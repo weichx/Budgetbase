@@ -186,6 +186,7 @@ Reference.prototype = {
                 this._fireEvent('child_added', child._splitUrl, value[k]);
             }
         } else {
+
             if (oldValue === null || oldValue === undefined) {
 //                this._fireEvent('child_added', this._splitUrl, this._data);
             }
@@ -208,6 +209,8 @@ Reference.prototype = {
     _update:function (value) {
 
         console.log("updating");
+
+
 
         if (typeof value !== 'object' || value === null) {
             throw new Error("Budgetbase.update failed: First argument must be an object containing the children to replace. ");
