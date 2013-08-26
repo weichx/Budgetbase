@@ -610,12 +610,11 @@ test('updating an object in tree with another object that has additional attribu
     expect(2);
 });
 
-test('calling update on an object whose children are nested objects', function () {
+test('calling update on an object will trigger one child_added event per child added', function () {
 
     var ref = new Budgetbase("one");
 
     var initial = {
-
         'b':{
             "b1":2,
             "b2":3
@@ -623,33 +622,26 @@ test('calling update on an object whose children are nested objects', function (
     };
 
     var end = {
-
         'a':{
             'b3':4,
             'b4':5
         },
-
         'c':4
     };
-
     ref.set(initial);
-
+    var buffer = 0;
+    var aAdded = false;
+    var cAdded = false;
     ref.on('child_added', function (s) {
-        equal(s.name(), s.name(), "added: " + s.name());
-        console.log('child_added', s.name(), s.val());
+        if (s.name() === 'a') {
+            aAdded = true;
+        } else if (s.name() === 'c') {
+            cAdded = true;
+        }
     });
-
-
-//    ref.on('child_changed', function (s) {
-//        equal(s.name(), s.name(), "changed: " + s.name());
-//    });
-//
-//    ref.update(end);
-//
-//    console.log(ref.child('c')._storeRef._data);
-//    console.log(ref.child('a').child('b4')._storeRef._data);
-
-    expect(1);
+    ref.update(end);
+    ok(aAdded);
+    ok(cAdded);
 });
 
 
