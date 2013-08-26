@@ -587,7 +587,11 @@ test('calling set with an array will convert the array to an object and add each
     expect(3);
 });
 
-test('updating an object in tree with another object that has additional attributes', function () {
+
+
+
+test('updating an object in tree with another object that has additional attributes', function() {
+
     var ref = new Budgetbase('t/e/s/t');
 
     var initial = {
@@ -602,48 +606,53 @@ test('updating an object in tree with another object that has additional attribu
     ref.set(initial);
 
     ref.on('child_added', function (s) {
-        equal(s.name(), 'c', 'should have added c');
+        equal(s.name(), s.name(), 'should have added: ' + s.name());
     });
 
-    ref.on('child_removed', function (s) {
-        equal(s.name(), 'b', 'should have removed b');
+    expect(2);
+});
+
+test('calling update on an object whose children are nested objects ', function() {
+
+    var ref = new Budgetbase("one");
+
+    var initial = {
+
+        'b': {
+            "b1" : 2,
+            "b2" : 3
+        }
+    }
+
+    var end = {
+
+        'a' : {
+            'b3' : 4,
+            'b4' : 5
+        },
+
+        'c':4
+    }
+
+    ref.set(initial);
+
+    ref.on('child_added', function(s) {
+        equal(s.name(), s.name(), "added: " + s.name());
     });
 
-    ref.on("child_changed", function (s) {
-        ok(true);
-    });
 
-    ref.child('a').on('value', function (s) {
-        equal(s.name(), 'a', 'should have changed value of a');
-    });
-
-    ref.child('c').on('child_added', function (s) {
-        equal(s.name(), 'c', 'should have added c');
-    });
-
-    ref.on('value', function (s) {
-        equal(s.name(), 't');
+    ref.on('child_changed', function(s) {
+        equal(s.name(), s.name(), "changed: " + s.name());
     });
 
     ref.update(end);
-    expect(3);
-});
 
-test('calling update on a location with null will throw an exception', function () {
-    var ref = new Budgetbase('one');
-    throws(function () {
-        ref.update(null);
-    });
+    console.log(ref.child('c')._data);
+    console.log(ref.child('a').child('b4')._data);
+
     expect(1);
 });
 
-test('calling update on a location with no arguments will throw an exception', function () {
-    var ref = new Budgetbase('one');
-    throws(function () {
-        ref.update();
-    });
-    expect(1);
-});
 
 test('calling update on a location with a primitive will throw an exception', function () {
     var ref = new Budgetbase('one');
@@ -652,4 +661,6 @@ test('calling update on a location with a primitive will throw an exception', fu
     });
     expect(1);
 });
+
+
 

@@ -3,22 +3,92 @@
 <head>
     <title></title>
     <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+
+
+
+
     <script>
+        /*
         var Budgetbase = Firebase;
         var root = 'https://dev-firebase.firebaseio.com/';
         var ref = new Budgetbase(root + 'here/we/go');
 
+<<<<<<< HEAD
+        var ref = new Budgetbase(root + 'one');
+
+        ref.on('child_added', function(s){
+            console.log(s.name());
+        });
+
+        ref.update({'child': 1});
+             */
+    </script>
+
+    <script>
+
+        var Budgetbase = Firebase;
+
+        var root = "https://burst.firebaseio.com/";
+
+        var ref = new Budgetbase(root + "two");
+
+        var initial = {
+            'a':{
+                "a1" : 1,
+                "a2" : 2
+            } ,
+
+            'b': {
+                "b1" : 2,
+                "b2" : 3
+            }
+        }
+
+        var end = {
+            'a':{
+                "a1" : 10,
+                "a2" : 20
+            },
+
+            'b' : {
+                'b3' : 4,
+                'b4' : 5
+            }
+        }
+
+        ref.set(initial);
+
+        ref.on('child_added', function(s) {
+            console.log("child added: " + s.name());
+        });
+
+        ref.on('child_changed', function(s) {
+            console.log("child changed: " + s.name());
+        }) ;
+
+        console.log("____________");
+        ref.update(end);
+=======
         ref.set({
             'child1':1,
             'child2':2,
             'child3':3
         });
 
+<<<<<<< HEAD
+        ref.somevar = 2;
+        var parent = ref.parent();
+
+        var child = parent.child('go');
+>>>>>>> 8d47ba0479a04ea7e6ba539d6459a84b9a8bb190
+=======
         ref.once('child_added', function (s) {
             console.log('child_added');
         })
+>>>>>>> 7878a99772237b8545992004bf5a7a749bb9b8d9
 
     </script>
+
 </head>
 <body>
 

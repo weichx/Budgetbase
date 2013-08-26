@@ -148,6 +148,7 @@ Reference.prototype = {
         var child;
 
         if (oldValueIsObject && newValueIsObject) {
+            console.log("set: two objects");
             for (var x in oldValue) {
                 if (value[x] === undefined) { //remove old values not in new value
                     child = this._addOrRetrieveChild(x);
@@ -214,6 +215,7 @@ Reference.prototype = {
         //we dont allow arrays, so process the value if it is an array and convert it to an object who's keys are
         //the array indices and values are the array values at that index.
         if (Object.prototype.toString.call(value) === '[object Array]') {
+            console.log("getting here");
             var obj = {};
             for (var a = 0, al = value.length; a < al; a++) {
                 obj[a] = value[a];
@@ -237,6 +239,9 @@ Reference.prototype = {
         if (oldValueIsObject && newValueIsObject) {
             console.log("two objects");
             for (var z in value) {
+//                if(typeof z === 'object') {
+//                    _update(value[z]);
+//                }
                 child = this._addOrRetrieveChild(z);
                 child._set(value[z]);
             }
