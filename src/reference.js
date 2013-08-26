@@ -30,6 +30,10 @@ Reference.prototype = {
             for (var i = 0, il = events.length; i < il; i++) {
                 var fn = events[i];
                 fn.call((fn.context || window), snapshot);
+                if (fn.once) {
+                    events.splice(i, 1);
+                    i--;
+                }
             }
         }
     },
@@ -80,28 +84,40 @@ Reference.prototype = {
     },
 
     //subscribes the reference to events. we could check that the event is valid, but we dont for now.
-    on:function (evtType, callback, context) {
+    on:function (evtType, once, callback, context) {
         if (!callback) throw new Error('You must supply a callback and event type to on');
         if (context) callback.context = context;
-        if (!this._events) this._events = {};
-        if (!this._events[evtType]) this._events[evtType] = [];
-        this._events[evtType].push(callback);
 
         if (evtType === 'value') {
             var data = this._data;
             if (data !== null) {
                 callback.call((context || window), new Snapshot(this._splitUrl, data));
+                if (once) {
+                    return;
+                }
             }
         }
 
         if (evtType === 'child_added') {
             data = this._data;
             if (typeof data === 'object' && data !== null) {
-                for (var k in data) {
-                    callback.call((context || window), new Snapshot(this._splitUrl, data[k]));
+                if (once) {
+                    //todo when priority works this should be called on top priority child
+                    for (var z in data) {
+                        callback.call((context || window), new Snapshot(this._splitUrl, data[z]));
+                        return;
+                    }
+                } else {
+                    for (var k in data) {
+                        callback.call((context || window), new Snapshot(this._splitUrl, data[k]));
+                    }
                 }
             }
         }
+
+        if (!this._events) this._events = {};
+        if (!this._events[evtType]) this._events[evtType] = [];
+        this._events[evtType].push(callback);
     },
 
     //internal set function to handle upwards firing of child changed events. Without this we would have little control

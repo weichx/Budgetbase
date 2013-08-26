@@ -75,11 +75,17 @@
             'child3':3
         });
 
+<<<<<<< HEAD
         ref.somevar = 2;
         var parent = ref.parent();
 
         var child = parent.child('go');
 >>>>>>> 8d47ba0479a04ea7e6ba539d6459a84b9a8bb190
+=======
+        ref.once('child_added', function (s) {
+            console.log('child_added');
+        })
+>>>>>>> 7878a99772237b8545992004bf5a7a749bb9b8d9
 
     </script>
 
