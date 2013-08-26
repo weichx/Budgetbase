@@ -107,10 +107,9 @@ Reference.prototype = {
                         callback.call((context || window), new Snapshot(this._splitUrl, data[z]));
                         return;
                     }
-                } else {
-                    for (var k in data) {
-                        callback.call((context || window), new Snapshot(this._splitUrl, data[k]));
-                    }
+                }
+                for (var k in data) {
+                    callback.call((context || window), new Snapshot(this._splitUrl, data[k]));
                 }
             }
         }
