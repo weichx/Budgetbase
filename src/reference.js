@@ -176,7 +176,9 @@ Reference.prototype = {
                 this._fireEvent('child_removed', child._splitUrl, oldValue[l]);
             }
         } else if (newValueIsObject) {
+            console.log("new value is object");
             for (var k in value) {
+                console.log("k in value");
                 child = this._addOrRetrieveChild(k);
                 child._set(value[k]);
                 this._fireEvent('child_added', child._splitUrl, value[k]);
@@ -240,9 +242,9 @@ Reference.prototype = {
         if (oldValueIsObject && newValueIsObject) {
             console.log("two objects");
             for (var z in value) {
-//                if(typeof z === 'object') {
-//                    _update(value[z]);
-//                }
+                if(typeof z === 'object') {
+                    this._update(value[z]);
+                }
                 child = this._addOrRetrieveChild(z);
                 child._set(value[z]);
             }

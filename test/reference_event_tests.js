@@ -647,8 +647,8 @@ test('calling update on an object whose children are nested objects ', function(
 
     ref.update(end);
 
-    console.log(ref.child('c')._data);
-    console.log(ref.child('a').child('b4')._data);
+    console.log(ref.child('c')._storeRef._data);
+    console.log(ref.child('a').child('b4')._storeRef._data);
 
     expect(1);
 });
