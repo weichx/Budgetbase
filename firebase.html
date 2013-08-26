@@ -4,77 +4,25 @@
     <title></title>
     <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
 
-
-
-
     <script>
-        /*
         var Budgetbase = Firebase;
-        var root = 'https://dev-firebase.firebaseio.com/';
-        var ref = new Budgetbase(root + 'here/we/go');
 
-<<<<<<< HEAD
-        var ref = new Budgetbase(root + 'one');
+        var root = "https://dev-firebase.firebaseio.com/";
+        var ref = new Budgetbase(root + 'nothere');
+        ref.update({
+            'child1':1,
+            'child2':2
+        });
 
-        ref.on('child_added', function(s){
+        var fn = function(s){
             console.log(s.name());
-        });
+        };
+        ref.on('child_added', fn);
 
-        ref.update({'child': 1});
-             */
+        ref.off('child_added', fn);
+
+        ref.child("hi").set('k');
     </script>
-
-    <script>
-
-        var Budgetbase = Firebase;
-
-        var root = "https://burst.firebaseio.com/";
-
-        var ref = new Budgetbase(root + "two");
-
-        var initial = {
-            'a':{
-                "a1" : 1,
-                "a2" : 2
-            } ,
-
-            'b': {
-                "b1" : 2,
-                "b2" : 3
-            }
-        }
-
-        var end = {
-            'a':{
-                "a1" : 10,
-                "a2" : 20
-            },
-
-            'b' : {
-                'b3' : 4,
-                'b4' : 5
-            }
-        }
-
-        ref.set(initial);
-
-        ref.on('child_added', function(s) {
-            console.log("child added: " + s.name());
-        });
-
-        ref.on('child_changed', function(s) {
-            console.log("child changed: " + s.name());
-        }) ;
-
-        console.log("____________");
-        ref.update(end);
-
-        ref.once('child_added', function (s) {
-            console.log('child_added');
-        })
-
-    </script>
-
 </head>
 <body>
 

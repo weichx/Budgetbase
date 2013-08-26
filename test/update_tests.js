@@ -83,7 +83,6 @@ test('calling update on a location with object data will trigger child changed e
     };
     ref.set(initial);
     ref.parent().on('child_changed', function (s) {
-        console.log(s);
         equal(s.name(), 'one', 'should trigger child_changed on parent');
     });
     ref.update(end);
@@ -119,20 +118,15 @@ test('calling update on a location with a null parameter will throw an exception
 test('calling update on an empty location will behave like set', function () {
 
     var ref = new Budgetbase('one');
+
+    ref.on('child_added', function (s) {
+        ok(s.name());
+    });
     ref.update({
         'child1':1,
         'child2':2,
         'child3':3,
     });
 
-    ref.on('child_added', function (s) {
-        ok("child added: " + s.name());
-    });
-
-//    ref.on("value", function(s) {
-//        ok("value: " + s.name());
-//    })
-
-    console.log(ref.child('child2')._storeRef._data);
     expect(2);
 });

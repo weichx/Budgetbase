@@ -28,11 +28,11 @@ Reference.prototype = {
         if (events) {
             var snapshot = new Snapshot(path, evtData);
             for (var i = 0, il = events.length; i < il; i++) {
-                var fn = events[i];
-                fn.call((fn.context || window), snapshot);
-                if (fn.once) {
+                var evt = events[i];
+                evt.callback.call((evt.context || window), snapshot);
+                if (evt.once) {
                     events.splice(i, 1);
-                    i--;
+                    il--;
                 }
             }
         }
@@ -86,8 +86,6 @@ Reference.prototype = {
     //subscribes the reference to events. we could check that the event is valid, but we dont for now.
     on:function (evtType, once, callback, context) {
         if (!callback) throw new Error('You must supply a callback and event type to on');
-        if (context) callback.context = context;
-
         if (evtType === 'value') {
             var data = this._data;
             if (data !== null) {
@@ -116,7 +114,45 @@ Reference.prototype = {
 
         if (!this._events) this._events = {};
         if (!this._events[evtType]) this._events[evtType] = [];
-        this._events[evtType].push(callback);
+        if (once) callback.once = true;
+        var evt = {
+            callback:callback,
+            context:context,
+            once:once
+        };
+        this._events[evtType].push(evt);
+    },
+
+    off:function (evtType, callback, context) {
+        if (!evtType && !callback) {
+            this._events = {};
+            return;
+        }
+
+        if (['child_added', 'child_removed', 'child_moved', 'child_changed', 'value'].indexOf(evtType) === -1) {
+            throw new Error('Budgetbase.off failed: first argument must be a valid event type: "value", "child_added",' +
+                ' "child_removed", "child_changed", or "child_moved".');
+        }
+
+        if (!callback) {
+            this._events[evtType] = [];
+        } else {
+            var events = this._events[evtType];
+            for (var i = 0, il = events.length; i < il; i++) {
+                var evt = events[i];
+                if (context) {
+                    if (evt.callback === callback && evt.context === context) {
+                        events.splice(i, 1);
+                        il--;
+                    }
+                } else {
+                    if (evt.callback === callback) {
+                        events.splice(i, 1);
+                        il--;
+                    }
+                }
+            }
+        }
     },
 
     //internal set function to handle upwards firing of child changed events. Without this we would have little control
@@ -148,7 +184,6 @@ Reference.prototype = {
         var child;
 
         if (oldValueIsObject && newValueIsObject) {
-            console.log("set: two objects");
             for (var x in oldValue) {
                 if (value[x] === undefined) { //remove old values not in new value
                     child = this._addOrRetrieveChild(x);
@@ -158,7 +193,6 @@ Reference.prototype = {
                     child._set(value[x]);
                     //manually fire child_changed event, the upwards calls will happen in set() so we only handle
                     //downwards child_changed calls here.
-                    console.log()
                     this._fireEvent('child_changed', child._splitUrl, value[x]);
                 }
             }
@@ -176,11 +210,7 @@ Reference.prototype = {
                 this._fireEvent('child_removed', child._splitUrl, oldValue[l]);
             }
         } else if (newValueIsObject) {
-
-            console.log("new value is object");
-
             for (var k in value) {
-                console.log("k in value");
                 child = this._addOrRetrieveChild(k);
                 child._set(value[k]);
                 this._fireEvent('child_added', child._splitUrl, value[k]);
@@ -208,10 +238,6 @@ Reference.prototype = {
 
     _update:function (value) {
 
-        console.log("updating");
-
-
-
         if (typeof value !== 'object' || value === null) {
             throw new Error("Budgetbase.update failed: First argument must be an object containing the children to replace. ");
         }
@@ -223,47 +249,36 @@ Reference.prototype = {
         //we dont allow arrays, so process the value if it is an array and convert it to an object who's keys are
         //the array indices and values are the array values at that index.
         if (Object.prototype.toString.call(value) === '[object Array]') {
-            console.log("getting here");
             var obj = {};
             for (var a = 0, al = value.length; a < al; a++) {
                 obj[a] = value[a];
             }
             value = obj;
         }
-
-
         var parent = this._parent;
         //upwards trace to make sure parent is an object and in tree
         parent._willSetChild(this._name, value);
 
         var oldValue = this._data;
-
+        this._data = value;
         var newValueIsObject = typeof value === 'object' && value !== null;
         var oldValueIsObject = typeof oldValue === 'object' && oldValue !== null;
-
-
         var child;
+
         if (oldValueIsObject && newValueIsObject) {
-            console.log("two objects");
             for (var z in value) {
-                if (oldValue[z] === undefined) {  //add children in new value not in old value
-                    child = this._addOrRetrieveChild(z);
-                    child._set(value[z]);
-                    this._fireEvent('child_added', child._splitUrl, value[z]);
-                }
+                child = this._addOrRetrieveChild(z);
+                child._set(value[z]);
+                this._fireEvent('child_added', child._splitUrl, value[z]);
             }
         }
         else if (newValueIsObject) {
-            console.log("new object");
             for (var k in value) {
                 child = this._addOrRetrieveChild(k);
                 child._set(value[k]);
+                this._fireEvent('child_added', child._splitUrl, value[k]);
             }
         }
-        else if (oldValueIsObject) {
-            console.log("old value is object, new value is primitive")
-        }
-
         this._fireEvent('value', this._splitUrl, this._data);
     },
 
@@ -275,8 +290,8 @@ Reference.prototype = {
         }
     },
 
-    //removes this reference from the tree. does NOT remove event listeners attached to this reference
-    //todo if unevented, consider remove the child from the parent
+//removes this reference from the tree. does NOT remove event listeners attached to this reference
+//todo if unevented, consider removing the child from the parent
     remove:function () {
         //make sure we aren't firing events when we don't need to
         if (this._data === null) return;
@@ -286,11 +301,11 @@ Reference.prototype = {
         this._data = null;
     },
 
-    //todo find a better pushId
-    //todo revisit when we add priority
-    //push is a reference generator. it will add a child to this location with a unique, timestamp based
-    //key name. if parameters are passed into this function it will also call set on the child, otherwise
-    //it will return the child.
+//todo find a better pushId
+//todo revisit when we add priority
+//push is a reference generator. it will add a child to this location with a unique, timestamp based
+//key name. if parameters are passed into this function it will also call set on the child, otherwise
+//it will return the child.
     push:function (value) {
         //dont allow pushing null values
         if (value === null) {
@@ -317,8 +332,9 @@ Reference.prototype = {
         return undefined;
     },
 
-    //creates or retrieves a child of this reference
+//creates or retrieves a child of this reference
     child:function (key) {
         return this._addOrRetrieveChild(key);
     }
-};
+}
+;
