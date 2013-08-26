@@ -633,33 +633,17 @@ test('calling update on an object will trigger one child_added event per child a
     var aAdded = false;
     var cAdded = false;
     ref.on('child_added', function (s) {
-<<<<<<< HEAD
-        equal(s.name(), s.name(), "added: " + s.name());
-    });
 
-
-    ref.on('child_changed', function(s) {
-        equal(s.name(), s.name(), "changed: " + s.name());
-    });
-
-    ref.update(end);
-
-    console.log(ref.child('c')._storeRef._data);
-    console.log(ref.child('a').child('b4')._storeRef._data);
-
-
-    expect(3);
-=======
         if (s.name() === 'a') {
             aAdded = true;
         } else if (s.name() === 'c') {
             cAdded = true;
         }
     });
+
     ref.update(end);
     ok(aAdded);
     ok(cAdded);
->>>>>>> 39e764ced9534f4dc4a98317ec21c066c7cdb8fd
 });
 
 
