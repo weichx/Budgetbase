@@ -198,8 +198,6 @@ Reference.prototype = {
             throw new Error("Budgetbase.update failed: Was called with 0 arguments. Expects at least 1.");
         }
 
-
-
         //we dont allow arrays, so process the value if it is an array and convert it to an object who's keys are
         //the array indices and values are the array values at that index.
         if (Object.prototype.toString.call(value) === '[object Array]') {
@@ -227,6 +225,9 @@ Reference.prototype = {
         if (oldValueIsObject && newValueIsObject) {
             console.log("two objects");
             for (var z in value) {
+                if(typeof z === 'object') {
+                    _update(value[z]);
+                }
                 child = this._addOrRetrieveChild(z);
                 child._set(value[z]);
             }

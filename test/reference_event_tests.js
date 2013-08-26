@@ -616,7 +616,7 @@ test('updating an object in tree with another object that has additional attribu
 
 });
 
-test('calling update on an object whose children are also ', function() {
+test('calling update on an object whose children are nested objects ', function() {
 
     var ref = new Budgetbase("one");
 
@@ -650,14 +650,13 @@ test('calling update on an object whose children are also ', function() {
         equal(s.name(), s.name(), "adding: " + s.name());
     });
 
-
     ref.update(end);
 
     console.log(ref.child('c')._data);
     console.log(ref.child('a').child('b4')._data);
 
     expect(2);
-})  ;
+});
 
 
 test('calling update on a location with a primitive will throw an exception', function () {

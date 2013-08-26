@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc304d35-b3db-467c-acb7-bb824bf3eb0e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/budgetbase.js" afterPath="$PROJECT_DIR$/src/budgetbase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/firebase.html" afterPath="$PROJECT_DIR$/firebase.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reference.js" afterPath="$PROJECT_DIR$/src/reference.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/reference_basic_tests.js" afterPath="$PROJECT_DIR$/test/reference_basic_tests.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/reference_event_tests.js" afterPath="$PROJECT_DIR$/test/reference_event_tests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snapshot.js" afterPath="$PROJECT_DIR$/src/snapshot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/snapshot_tests.js" afterPath="$PROJECT_DIR$/test/snapshot_tests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.html" afterPath="$PROJECT_DIR$/test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Budgetbase.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/reference.js" changelist="fc304d35-b3db-467c-acb7-bb824bf3eb0e" time="1377466766825" ignored="false" />
+    <file path="/reference.js" changelist="fc304d35-b3db-467c-acb7-bb824bf3eb0e" time="1377475044166" ignored="false" />
     <file path="/firebase.html" changelist="fc304d35-b3db-467c-acb7-bb824bf3eb0e" time="1377463155998" ignored="false" />
     <file path="/reference_event_tests.js" changelist="fc304d35-b3db-467c-acb7-bb824bf3eb0e" time="1377466198032" ignored="false" />
     <file path="/Dummy.txt" changelist="fc304d35-b3db-467c-acb7-bb824bf3eb0e" time="1377473843402" ignored="false" />
@@ -60,7 +53,7 @@
           <file leaf-file-name="reference_event_tests.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="613" column="16" selection-start="18866" selection-end="18866" vertical-scroll-proportion="0.16380788">
+                <state line="607" column="25" selection-start="18745" selection-end="18745" vertical-scroll-proportion="0.5497427">
                   <folding />
                 </state>
               </provider>
@@ -109,7 +102,7 @@
           <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/reference.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="13" column="24" selection-start="528" selection-end="528" vertical-scroll-proportion="0.13994911">
+                <state line="228" column="25" selection-start="9833" selection-end="9833" vertical-scroll-proportion="0.58524173">
                   <folding />
                 </state>
               </provider>
@@ -136,7 +129,7 @@
           <file leaf-file-name="budgetbase.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="4" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0">
+                <state line="43" column="30" selection-start="1193" selection-end="1194" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -565,13 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/event_node.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/reference_basic_tests.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
@@ -586,9 +572,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/event_node.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/budgetbase.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="4" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0">
+        <state line="43" column="30" selection-start="1193" selection-end="1194" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -602,7 +595,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/reference_event_tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="613" column="16" selection-start="18866" selection-end="18866" vertical-scroll-proportion="0.16380788">
+        <state line="607" column="25" selection-start="18745" selection-end="18745" vertical-scroll-proportion="0.5497427">
           <folding />
         </state>
       </provider>
