@@ -20,7 +20,11 @@ var Budgetbase;
     Budgetbase.prototype = {
 
         on:function (evtType, callback, context) {
-            this._storeRef.on(evtType, callback, context);
+            this._storeRef.on(evtType, false, callback, context);
+        },
+
+        once:function (evtType, callback, context) {
+            this._storeRef.once(evtType, true, callback, context);
         },
 
         set:function (value) {

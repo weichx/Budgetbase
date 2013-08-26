@@ -14,10 +14,9 @@
             'child3':3
         });
 
-        ref.somevar = 2;
-        var parent = ref.parent();
-
-        var child = parent.child('go');
+        ref.once('child_added', function (s) {
+            console.log('child_added');
+        })
 
     </script>
 </head>
