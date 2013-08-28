@@ -81,14 +81,14 @@ var Budgetbase;
 
     Budgetbase._roots = {};
     //returns the root reference
-    Budgetbase.__getRoot = function () {
-        return root;
+    Budgetbase.__getRoot = function (url) {
+        return Budgetbase._roots[url];
     };
 
     //mainly for testing, this resets the root object, allowing other objects
     //to be garbage collected and effectively resetting the data tree.
     Budgetbase.resetStore = function () {
-        Budgetbase.roots = {};
+        Budgetbase._roots = {};
     };
 
     //returns the root reference's data object
