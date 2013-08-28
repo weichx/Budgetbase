@@ -10,7 +10,6 @@ var Budgetbase;
         if(!splitUrl.length >= 3){
             throw new Error('Massive failure');
         }
-
         //todo fix this
         var baseUrl = splitUrl[0] + '/' + splitUrl[1] + '/' + splitUrl[2] + '/';
 

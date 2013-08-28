@@ -62,7 +62,6 @@ Reference.prototype = {
     _willRemoveChild:function (childKey, childData) {
         //todo optimize this check when you get around to active / inactive children
         if (this._data === null) return;
-        debugger;
         var url = this._splitUrl;
         var keys = Object.keys(this._data); //we know it's an object because it has a child trying to be removed
         //remove self from tree if we only had one child
@@ -73,15 +72,15 @@ Reference.prototype = {
 
             delete this._children[childKey];
             delete this._data[childKey];
-            //this._data = null;
-           // delete this.data[childKey];
+
         } else {
             this._fireEvent('child_removed', url.concat([childKey]), childData);
 
             delete this._children[childKey];
             delete this._data[childKey];
-           // this._data[childKey] = null;
-          //  delete this._data[childKey];
+            // this._data[childKey] = null;
+            //  delete this._data[childKey];
+
         }
     },
 
@@ -190,7 +189,7 @@ Reference.prototype = {
         parent._willSetChild(this._name, value);
 
         var oldValue = this._data;
-       // this._data = value;
+        // this._data = value;
         var newValueIsObject = typeof value === 'object' && value !== null;
         var oldValueIsObject = typeof oldValue === 'object' && oldValue !== null;
         var child;
@@ -276,7 +275,7 @@ Reference.prototype = {
         parent._willSetChild(this._name, value);
 
         var oldValue = this._data;
-       // this._data = value;
+        // this._data = value;
         var newValueIsObject = typeof value === 'object' && value !== null;
         var oldValueIsObject = typeof oldValue === 'object' && oldValue !== null;
         var child;

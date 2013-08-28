@@ -4,9 +4,43 @@
     <title></title>
     <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
     <script>
+<<<<<<< HEAD
         var Budgetbase = Firebase;
 
         var root = "https://dev-firebase.firebaseio.com/";
+=======
+//        var Budgetbase = Firebase;
+//
+//        var root = "https://burst.firebaseio.com/";
+//        var ref = new Budgetbase(root + "one");
+//
+//        var fn_add = function(s){
+//            console.log(s.name() + " was added");
+//        };
+//
+//        var fn_remove = function(s){
+//            console.log(s.name() + " was removed");
+//        };
+//
+
+//
+//
+//        ref.set(initial);
+//
+//        ref.on('child_added', fn_add);
+//
+//        ref.parent().on('child_removed', fn_remove);
+       // ref.child('a').on('child_removed', fn_remove);
+//        ref.update(end);
+
+    </script>
+
+    <script>
+
+        var Budgetbase = Firebase;
+
+        var root = "https://burst.firebaseio.com/";
+>>>>>>> 26ebe85d4b4e230931f9f632a76b1fd66fc3e67a
         var ref = new Budgetbase(root + "two");
 
         var fn_add = function(s){
@@ -18,7 +52,10 @@
         };
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 26ebe85d4b4e230931f9f632a76b1fd66fc3e67a
         var initial = {
             'a':{
                 "b1":2,
@@ -31,9 +68,17 @@
                 'b3':5
             }
         };
+<<<<<<< HEAD
         ref.child('a').on('child_removed', fn_remove);
         ref.on('child_added', fn_add);
         ref.on('child_removed', fn_remove);
+=======
+
+        ref.on('child_added', fn_add);
+        ref.on('child_removed', fn_remove);
+        ref.child('a').on('child_removed', fn_remove);
+
+>>>>>>> 26ebe85d4b4e230931f9f632a76b1fd66fc3e67a
         ref.set(initial);
         ref.update(end);
     </script>
