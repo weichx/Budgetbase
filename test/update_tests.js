@@ -29,7 +29,7 @@ test('updating an object in tree with another object that has additional attribu
 
 test('calling update on an object will trigger one child_added event per child added', function () {
 
-    var ref = new Budgetbase("one");
+    var ref = new Budgetbase(R + "one");
 
     var initial = {
         'b':{
@@ -65,7 +65,7 @@ test('calling update on an object will trigger one child_added event per child a
 });
 
 test('calling update on a location with object data will trigger child changed events on the parent', function () {
-    var ref = new Budgetbase("one");
+    var ref = new Budgetbase(R + "one");
 
     var initial = {
         'b':{
@@ -90,7 +90,7 @@ test('calling update on a location with object data will trigger child changed e
 });
 
 test('calling update on a location with nested object data with another nested object', function() {
-    var ref = new Budgetbase("one");
+    var ref = new Budgetbase(R + "one");
 
     var initial = {
         'a':{

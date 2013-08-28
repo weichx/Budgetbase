@@ -52,7 +52,6 @@ Reference.prototype = {
             if (parent && typeof parentData === 'object' && parentData !== null) {
                 parentData[this._name] = this._data;
             }
-            console.log('will set', childKey);
             this._fireEvent('child_added', this._splitUrl.concat([childKey]), childData);
             this._fireEvent('value', this._splitUrl, data);
             parent && parent._willSetChild(this._name, data);
@@ -70,18 +69,10 @@ Reference.prototype = {
             this._fireEvent('child_removed', url.concat([childKey]), childData);
             this._fireEvent('value', url, null);
             this._parent && this._parent._willRemoveChild(this._name, this._data);
-
-            delete this._children[childKey];
-            delete this._data[childKey];
-
+            this._data = null;
         } else {
             this._fireEvent('child_removed', url.concat([childKey]), childData);
-
-            delete this._children[childKey];
             delete this._data[childKey];
-            // this._data[childKey] = null;
-            //  delete this._data[childKey];
-
         }
     },
 
@@ -278,7 +269,7 @@ Reference.prototype = {
         parent._willSetChild(this._name, value);
 
         var oldValue = this._data;
-        // this._data = value;
+        this._data = value;
         var newValueIsObject = typeof value === 'object' && value !== null;
         var oldValueIsObject = typeof oldValue === 'object' && oldValue !== null;
         var child;
@@ -287,7 +278,6 @@ Reference.prototype = {
             for (var z in value) {
                 child = this._addOrRetrieveChild(z);
                 child._set(value[z]);
-                console.log('added 2');
                 this._fireEvent('child_added', child._splitUrl, value[z]);
             }
         }
@@ -295,7 +285,6 @@ Reference.prototype = {
             for (var k in value) {
                 child = this._addOrRetrieveChild(k);
                 child._set(value[k]);
-                console.log('added 3');
                 this._fireEvent('child_added', child._splitUrl, value[k]);
             }
         }

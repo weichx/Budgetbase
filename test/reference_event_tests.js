@@ -14,7 +14,7 @@ test('calling `set` will write data into the store', function () {
 test('calling `set` will create reference nodes if none exist for a given path', function () {
     var ref = new Budgetbase(R + 'one/two');
     ref.set('five');
-    var root = Budgetbase.__getRoot();
+    var root = Budgetbase.__getRoot(R);
     ok(root._data['one'], 'root should have a child for key `one`');
     ok(root._data['one']['two'], 'root.one should have a child at key `two`');
 });
@@ -24,7 +24,7 @@ test('calling `on` will add a callback to a reference for a given event type', f
     var fn = function (snapshot) {
     };
     ref.on('value', fn);
-    var valueEvents = Budgetbase.__getRoot().child('one')._events['value'];
+    var valueEvents = Budgetbase.__getRoot(R).child('one')._events['value'];
     equal(valueEvents.length, 1, 'valueEvents should be an array of length 1');
 });
 
@@ -189,7 +189,7 @@ test('calling set with null on a location should not fire child_added on the par
 test('calling remove on a location not in the tree should not add it to the tree', function () {
     var ref = new Budgetbase(R + 'onefish/twofish/redfish/bluefish');
     ref.remove();
-    equal(Budgetbase.getStore(), null, 'location should have been empty, wasnt');
+    equal(Budgetbase.getStore(R), null, 'location should have been empty, wasnt');
 });
 
 test('calling remove on a location in the tree should remove it and all empty parents from the tree', function () {
@@ -198,7 +198,7 @@ test('calling remove on a location in the tree should remove it and all empty pa
 
     ref.remove();
 
-    equal(Budgetbase.getStore(), null, 'should have removed all keys in the tree since we dont allow empty objects');
+    equal(Budgetbase.getStore(R), null, 'should have removed all keys in the tree since we dont allow empty objects');
 });
 
 test('calling remove on a location in the tree should remove it and all empty parents and leave non empty parents in tree', function () {
@@ -213,8 +213,8 @@ test('calling remove on a location in the tree should remove it and all empty pa
     //calling set on this location should turn two into {three: 'hello'}
     ref.set('hello');
     ref.remove();
-    equal(Budgetbase.getStore().one.two, undefined, 'should have removed store.one.two');
-    equal(Budgetbase.getStore().one.unchanged, 'should still be here after remove', 'store.one.unchanged should have remained in tree');
+    equal(Budgetbase.getStore(R).one.two, undefined, 'should have removed store.one.two');
+    equal(Budgetbase.getStore(R).one.unchanged, 'should still be here after remove', 'store.one.unchanged should have remained in tree');
 });
 
 test('calling remove on a location in the tree should remove it and call value on itself and child_removed on parent', function () {
@@ -238,7 +238,7 @@ test('calling remove on a location in the tree should remove it and call value o
         called++;
     });
     ref.remove();
-    var store = Budgetbase.getStore();
+    var store = Budgetbase.getStore(R);
     ok(store.one.unchanged, 'should not have removed unchanged');
     ok(!store.one.two, 'should have removed two');
     expect(4);
@@ -611,7 +611,7 @@ test('updating an object in tree with another object that has additional attribu
 
 test('calling update on an object will trigger one child_added event per child added', function () {
 
-    var ref = new Budgetbase("one");
+    var ref = new Budgetbase(R + "one");
 
     var initial = {
         'b':{
@@ -647,7 +647,7 @@ test('calling update on an object will trigger one child_added event per child a
 });
 
 test('calling update on a location with object data will trigger child changed events on the parent', function () {
-    var ref = new Budgetbase("one");
+    var ref = new Budgetbase(R + "one");
 
     var initial = {
         'b':{
@@ -672,7 +672,7 @@ test('calling update on a location with object data will trigger child changed e
 });
 
 test('calling update on a location with nested object data with another nested object', function() {
-    var ref = new Budgetbase("one");
+    var ref = new Budgetbase(R + "one");
 
     var initial = {
         'a':{
@@ -703,7 +703,7 @@ test('calling update on a location with nested object data with another nested o
 
     ref.update(end);
     ok(b3Added) ;
-    var store = Budgetbase.__getRoot();
+    var store = Budgetbase.__getRoot(R);
 
     console.log("store : " + store.child('one').child('a').child("b1")._data);
 });

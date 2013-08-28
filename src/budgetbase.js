@@ -82,6 +82,9 @@ var Budgetbase;
     Budgetbase._roots = {};
     //returns the root reference
     Budgetbase.__getRoot = function (url) {
+        if(url.lastIndexOf('/') === url.length - 1){
+            url = url.substring(0, url.length - 1);
+        }
         return Budgetbase._roots[url];
     };
 
@@ -92,8 +95,11 @@ var Budgetbase;
     };
 
     //returns the root reference's data object
-    Budgetbase.getStore = function () {
-        return root._data;
+    Budgetbase.getStore = function (url) {
+        if(url.lastIndexOf('/') === url.length - 1){
+            url = url.substring(0, url.length - 1);
+        }
+        return Budgetbase._roots[url]._data;
     };
 
 }());
