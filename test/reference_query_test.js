@@ -5,7 +5,7 @@ module('Reference Query', {
 });
 
 test('calling on("value") on a location that has  data in the store will fire a value event with that data', function () {
-    var ref = new Budgetbase('one');
+    var ref = new Budgetbase(R + 'one');
     ref.set('hello');
     ref.on('value', function (snapshot) {
         equal(snapshot.val(), 'hello', 'should have fired the value event');
@@ -15,7 +15,7 @@ test('calling on("value") on a location that has  data in the store will fire a 
 
 //todo when we get to networking this will likely change
 test('calling on("value") on a location that does not have data will not fire a value event', function () {
-    var ref = new Budgetbase('test');
+    var ref = new Budgetbase(R + 'test');
     ref.on('value', function (s) {
         ok(false);
     });
@@ -23,8 +23,8 @@ test('calling on("value") on a location that does not have data will not fire a 
 });
 
 test('on() will trigger separately for different instances of Budgetbase pointing at the same location', function () {
-    var ref1 = new Budgetbase('test');
-    var ref2 = new Budgetbase('test');
+    var ref1 = new Budgetbase(R + 'test');
+    var ref2 = new Budgetbase(R + 'test');
 
     ref1.set('hello');
 
@@ -44,7 +44,7 @@ test('on() will trigger separately for different instances of Budgetbase pointin
 });
 
 test('calling on with a callback and context will invoke the callback with the context', function(){
-    var ref = new Budgetbase('awesome');
+    var ref = new Budgetbase(R + 'awesome');
     var object = {};
     ref.on('value', function(s){
         this.worksGreat = true;
@@ -54,7 +54,7 @@ test('calling on with a callback and context will invoke the callback with the c
 });
 
 test('calling child_added on a location that has children in the store will fire a child_added event per child at location', function () {
-    var ref = new Budgetbase('test');
+    var ref = new Budgetbase(R + 'test');
     ref.set({
         child1:'1',
         child2:'2'
@@ -66,7 +66,7 @@ test('calling child_added on a location that has children in the store will fire
 });
 
 test('calling child_added on a location that does not have children in the store will not fire any child_added events', function () {
-    var ref = new Budgetbase('test');
+    var ref = new Budgetbase(R + 'test');
     ref.on('child_added', function (s) {
         ok(s);
     });
@@ -74,7 +74,7 @@ test('calling child_added on a location that does not have children in the store
 });
 
 test('calling once will only ever fire an event one time', function () {
-    var ref = new Budgetbase('test');
+    var ref = new Budgetbase(R + 'test');
     ref.once('value', function (s) {
         ok(s);
     });
@@ -84,7 +84,7 @@ test('calling once will only ever fire an event one time', function () {
 });
 
 test('calling once on a populated location will return data', function () {
-    var ref = new Budgetbase('meow');
+    var ref = new Budgetbase(R + 'meow');
     ref.set('object');
     ref.once('value', function (s) {
         equal(s.val(), 'object');
@@ -94,7 +94,7 @@ test('calling once on a populated location will return data', function () {
 });
 
 test('calling once("child_added") on a populated location with multiple children will only return one child', function () {
-    var ref = new Budgetbase('meow');
+    var ref = new Budgetbase(R + 'meow');
     ref.set({
         'child1':'ok',
         'child2':'ok2'
@@ -106,7 +106,7 @@ test('calling once("child_added") on a populated location with multiple children
 });
 
 test('calling off with no parameters will remove all callbacks from a reference', function () {
-    var ref = new Budgetbase('one/two');
+    var ref = new Budgetbase(R + 'one/two');
     ref.on('value', function (s) {
         ok(s);
     });
@@ -121,7 +121,7 @@ test('calling off with no parameters will remove all callbacks from a reference'
 });
 
 test('calling off with an event type will remove all events of that type and only events of that type', function () {
-    var ref = new Budgetbase('one/two/three');
+    var ref = new Budgetbase(R + 'one/two/three');
     ref.on('value', function(){});
     ref.on('value', function(){});
     ref.on('value', function(){});
@@ -134,7 +134,7 @@ test('calling off with an event type will remove all events of that type and onl
 });
 
 test('calling off with a context will only remove callbacks that also have that context', function(){
-    var ref = new Budgetbase('is/awesome');
+    var ref = new Budgetbase(R + 'is/awesome');
     var object = {};
     var fn = function(s){
         this.awesome = true;

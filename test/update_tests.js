@@ -7,7 +7,7 @@ module('Reference Events Update', {
 
 test('updating an object in tree with another object that has additional attributes', function () {
 
-    var ref = new Budgetbase('t/e/s/t');
+    var ref = new Budgetbase(R + 't/e/s/t');
 
     var initial = {
         'a':1,
@@ -128,7 +128,7 @@ test('calling update on a location with nested object data with another nested o
 
 
 test('calling update on a location with a primitive will throw an exception', function () {
-    var ref = new Budgetbase('one');
+    var ref = new Budgetbase(R + 'one');
     throws(function () {
         ref.update('hello');
     });
@@ -137,7 +137,7 @@ test('calling update on a location with a primitive will throw an exception', fu
 
 
 test('calling update on a location with no parameter will throw an exeception', function () {
-    var ref = new Budgetbase('one');
+    var ref = new Budgetbase(R + 'one');
     throws(function () {
         ref.update();
     });
@@ -145,7 +145,7 @@ test('calling update on a location with no parameter will throw an exeception', 
 });
 
 test('calling update on a location with a null parameter will throw an exception', function () {
-    var ref = new Budgetbase('one');
+    var ref = new Budgetbase(R + 'one');
     throws(function () {
         ref.update(null);
     });
@@ -154,7 +154,7 @@ test('calling update on a location with a null parameter will throw an exception
 
 test('calling update on an empty location will behave like set', function () {
 
-    var ref = new Budgetbase('one');
+    var ref = new Budgetbase(R + 'one');
 
     ref.on('child_added', function (s) {
         ok(s.name());
