@@ -89,6 +89,43 @@ test('calling update on a location with object data will trigger child changed e
     expect(1);
 });
 
+test('calling update on a location with nested object data with another nested object', function() {
+    var ref = new Budgetbase("one");
+
+    var initial = {
+        'a':{
+            "b1":2,
+            "b2":3
+        }
+    };
+
+    var end = {
+        'a':{
+            'b3':4
+        }
+    };
+
+    var b3Added = false;
+
+    ref.parent().on('child_changed', function(s) {
+        equal(s.name(), 'one', 'triggering child_changed on parent');
+    });
+
+    ref.on('child_added', function(s) {
+        if(s.name() === 'a'){
+           b3Added = true;
+        }
+    })
+
+    ref.set(initial);
+
+    ref.update(end);
+    ok(b3Added) ;
+    var store = Budgetbase.__getRoot();
+
+    console.log("store : " + store.child('one').child('a').child("b1")._data);
+});
+
 
 test('calling update on a location with a primitive will throw an exception', function () {
     var ref = new Budgetbase('one');
@@ -124,8 +161,7 @@ test('calling update on an empty location will behave like set', function () {
     });
     ref.update({
         'child1':1,
-        'child2':2,
-        'child3':3,
+        'child2':2
     });
 
     expect(2);

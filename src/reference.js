@@ -26,6 +26,7 @@ Reference.prototype = {
     _fireEvent:function (evtType, path, evtData) {
         var events = this._events && this._events[evtType];
         if (events) {
+            console.log("firing event");
             var snapshot = new Snapshot(path, evtData);
             for (var i = 0, il = events.length; i < il; i++) {
                 var evt = events[i];
@@ -68,10 +69,18 @@ Reference.prototype = {
             this._fireEvent('child_removed', url.concat([childKey]), childData);
             this._fireEvent('value', url, null);
             this._parent && this._parent._willRemoveChild(this._name, this._data);
-            this._data = null;
+
+            delete this._children[childKey];
+            delete this._data[childKey];
+            //this._data = null;
+            //delete this.data[childKey];
         } else {
             this._fireEvent('child_removed', url.concat([childKey]), childData);
+
+            delete this._children[childKey];
             delete this._data[childKey];
+            //this._data[childKey] = null;
+            //delete this.data[childKey];
         }
     },
 
@@ -178,7 +187,7 @@ Reference.prototype = {
         parent._willSetChild(this._name, value);
 
         var oldValue = this._data;
-        this._data = value;
+       // this._data = value;
         var newValueIsObject = typeof value === 'object' && value !== null;
         var oldValueIsObject = typeof oldValue === 'object' && oldValue !== null;
         var child;
@@ -186,7 +195,9 @@ Reference.prototype = {
         if (oldValueIsObject && newValueIsObject) {
             for (var x in oldValue) {
                 if (value[x] === undefined) { //remove old values not in new value
+                    console.log("should be getting here " + oldValue[x]);
                     child = this._addOrRetrieveChild(x);
+                    this._willRemoveChild(x, child._data);     // was old value of x.
                     this._fireEvent('child_removed', child._splitUrl, oldValue[x]);
                 } else {    //update old values still in new value
                     child = this._addOrRetrieveChild(x);
@@ -222,6 +233,8 @@ Reference.prototype = {
             }
             //new and old are primitives
         }
+
+        this._data = value;
         this._fireEvent('value', this._splitUrl, this._data);
     },
 
@@ -260,7 +273,7 @@ Reference.prototype = {
         parent._willSetChild(this._name, value);
 
         var oldValue = this._data;
-        this._data = value;
+       // this._data = value;
         var newValueIsObject = typeof value === 'object' && value !== null;
         var oldValueIsObject = typeof oldValue === 'object' && oldValue !== null;
         var child;
@@ -279,6 +292,8 @@ Reference.prototype = {
                 this._fireEvent('child_added', child._splitUrl, value[k]);
             }
         }
+
+
         this._fireEvent('value', this._splitUrl, this._data);
     },
 

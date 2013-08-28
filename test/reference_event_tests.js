@@ -96,7 +96,6 @@ test('calling set on a location with a primitive calls child_added on parent ref
     childRef.set('hello');
     equal(called, 0, 'called should be 0, was ' + called);
 });
-
 test('calling set on a location with an object calls child_added on the parent', function () {
     var called = 0;
     var ref = new Budgetbase('one/two');
