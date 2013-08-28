@@ -224,6 +224,7 @@ test('calling remove on a location in the tree should remove it and call value o
         'unchanged':'should still be here after remove'
     });
     oneRef.on('child_removed', function (snapshot) {
+        console.log('removed');
         ok(snapshot.val(), 'should be valid object and not null');
     });
     var ref = new Budgetbase(R + 'one/two/three');
@@ -233,6 +234,7 @@ test('calling remove on a location in the tree should remove it and call value o
     //callback is invoked.
     ref.on('value', function (snapshot) {
         if (called === 1) {
+            console.log('value');
             ok(snapshot.val() === null, 'should have hit this');
         }
         called++;
@@ -735,7 +737,6 @@ test('calling update on a location with a null parameter will throw an exception
 });
 
 test('calling update on an empty location will behave like set', function () {
-
     var ref = new Budgetbase(R + 'one');
 
     ref.on('child_added', function (s) {

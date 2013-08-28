@@ -121,7 +121,7 @@ test('calling update on a location with nested object data with another nested o
 
     ref.update(end);
     ok(b3Added) ;
-    var store = Budgetbase.__getRoot();
+    var store = Budgetbase.__getRoot(R);
 
     console.log("store : " + store.child('one').child('a').child("b1")._data);
 });

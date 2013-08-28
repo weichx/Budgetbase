@@ -71,6 +71,7 @@ Reference.prototype = {
             this._parent && this._parent._willRemoveChild(this._name, this._data);
             this._data = null;
         } else {
+            console.log('will remove', childKey);
             this._fireEvent('child_removed', url.concat([childKey]), childData);
             delete this._data[childKey];
         }
@@ -177,7 +178,6 @@ Reference.prototype = {
             value = obj;
         }
         var parent = this._parent;
-        console.log(this);
         //upwards trace to make sure parent is an object and in tree
         parent._willSetChild(this._name, value);
 
