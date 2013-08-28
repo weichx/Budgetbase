@@ -186,6 +186,7 @@ Reference.prototype = {
             value = obj;
         }
         var parent = this._parent;
+        console.log(this);
         //upwards trace to make sure parent is an object and in tree
         parent._willSetChild(this._name, value);
 

@@ -2,8 +2,6 @@
 var Budgetbase;
 (function () {
 
-    var root = new Reference([], null);
-
     //creates a new reference or finds an existing reference and return
     Budgetbase = function (url) {
         var splitUrl = url.split('/');
@@ -13,7 +11,11 @@ var Budgetbase;
         //todo fix this
         var baseUrl = splitUrl[0] + '/' + splitUrl[1] + '/' + splitUrl[2] + '/';
 
-        var ref = root;
+        var ref;
+        if(!Budgetbase._roots[baseUrl]){
+            Budgetbase._roots[baseUrl] = new Reference([baseUrl], null);
+        }
+        ref = Budgetbase._roots[baseUrl];
         if (url !== '') {
             for (var i = 3, il = splitUrl.length; i < il; i++) {
                 ref = ref._addOrRetrieveChild(splitUrl[i]);
@@ -73,6 +75,7 @@ var Budgetbase;
         }
     };
 
+    Budgetbase._roots = {};
     //returns the root reference
     Budgetbase.__getRoot = function () {
         return root;
