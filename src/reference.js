@@ -72,15 +72,15 @@ Reference.prototype = {
 
             delete this._children[childKey];
             delete this._data[childKey];
-            //this._data = null;
-            //delete this.data[childKey];
+          //  this._data = null;
+          //  delete this.data[childKey];
         } else {
             this._fireEvent('child_removed', url.concat([childKey]), childData);
 
             delete this._children[childKey];
             delete this._data[childKey];
-            //this._data[childKey] = null;
-            //delete this.data[childKey];
+           // this._data[childKey] = null;
+           // delete this.data[childKey];
         }
     },
 

@@ -25,40 +25,29 @@
     </script>
 
     <script>
-        var Budgetbase = Firebase;
+//        var Budgetbase = Firebase;
+//
+//        var root = "https://burst.firebaseio.com/";
+//        var ref = new Budgetbase(root + "one");
+//
+//        var fn_add = function(s){
+//            console.log(s.name() + " was added");
+//        };
+//
+//        var fn_remove = function(s){
+//            console.log(s.name() + " was removed");
+//        };
+//
 
-        var root = "https://burst.firebaseio.com/";
-        var ref = new Budgetbase(root + "one");
-
-        var fn_add = function(s){
-            console.log(s.name() + " was added");
-        };
-
-        var fn_remove = function(s){
-            console.log(s.name() + " was removed");
-        };
-
-        var initial = {
-            'a':{
-                "b1":2,
-                "b2":3
-            }
-        };
-
-        var end = {
-            'a':{
-                'b3':4
-            }
-        };
-
-
-        ref.set(initial);
-
-        ref.on('child_added', fn_add);
-
-        ref.parent().on('child_removed', fn_remove);
-        ref.child('a').on('child_removed', fn_remove);
-        ref.update(end);
+//
+//
+//        ref.set(initial);
+//
+//        ref.on('child_added', fn_add);
+//
+//        ref.parent().on('child_removed', fn_remove);
+       // ref.child('a').on('child_removed', fn_remove);
+//        ref.update(end);
 
     </script>
 
@@ -79,22 +68,23 @@
 
 
         var initial = {
-
+            'a':{
                 "b1":2,
-                "b2":3
-
+                "b2":4
+            }
         };
 
         var end = {
-
-                'b3':4
-
+            'a':{
+                'b3':5
+            }
         };
 
-        ref.set(initial);
-
         ref.on('child_added', fn_add);
+        ref.on('child_removed', fn_remove);
+        ref.child('a').on('child_removed', fn_remove);
 
+        ref.set(initial);
         ref.update(end);
 
     </script>
