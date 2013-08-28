@@ -15,7 +15,7 @@ var Budgetbase;
 
         var ref = root;
         if (url !== '') {
-            for (var i = 0, il = splitUrl.length; i < il; i++) {
+            for (var i = 3, il = splitUrl.length; i < il; i++) {
                 ref = ref._addOrRetrieveChild(splitUrl[i]);
             }
         }

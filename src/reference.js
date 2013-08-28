@@ -52,6 +52,7 @@ Reference.prototype = {
             if (parent && typeof parentData === 'object' && parentData !== null) {
                 parentData[this._name] = this._data;
             }
+            console.log('will set', childKey);
             this._fireEvent('child_added', this._splitUrl.concat([childKey]), childData);
             this._fireEvent('value', this._splitUrl, data);
             parent && parent._willSetChild(this._name, data);
@@ -189,7 +190,7 @@ Reference.prototype = {
         parent._willSetChild(this._name, value);
 
         var oldValue = this._data;
-        // this._data = value;
+        this._data = value;
         var newValueIsObject = typeof value === 'object' && value !== null;
         var oldValueIsObject = typeof oldValue === 'object' && oldValue !== null;
         var child;
@@ -213,6 +214,7 @@ Reference.prototype = {
                 if (oldValue[z] === undefined) {  //add children in new value not in old value
                     child = this._addOrRetrieveChild(z);
                     child._set(value[z]);
+                    console.log('child_added 1');
                     this._fireEvent('child_added', child._splitUrl, value[z]);
                 }
             }
@@ -226,6 +228,7 @@ Reference.prototype = {
             for (var k in value) {
                 child = this._addOrRetrieveChild(k);
                 child._set(value[k]);
+                console.log('added!', k);
                 this._fireEvent('child_added', child._splitUrl, value[k]);
             }
         } else {
@@ -236,7 +239,6 @@ Reference.prototype = {
             //new and old are primitives
         }
 
-        this._data = value;
         this._fireEvent('value', this._splitUrl, this._data);
     },
 
@@ -284,6 +286,7 @@ Reference.prototype = {
             for (var z in value) {
                 child = this._addOrRetrieveChild(z);
                 child._set(value[z]);
+                console.log('added 2');
                 this._fireEvent('child_added', child._splitUrl, value[z]);
             }
         }
@@ -291,6 +294,7 @@ Reference.prototype = {
             for (var k in value) {
                 child = this._addOrRetrieveChild(k);
                 child._set(value[k]);
+                console.log('added 3');
                 this._fireEvent('child_added', child._splitUrl, value[k]);
             }
         }
@@ -342,6 +346,7 @@ Reference.prototype = {
         var shouldFireAddChild = this._data !== null;
         child.set(value);
         if (shouldFireAddChild) {
+            console.log('added 4');
             this._fireEvent('child_added', child._splitUrl, value);
         }
         //ensures consistent return points
