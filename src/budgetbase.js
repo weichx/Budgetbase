@@ -7,6 +7,13 @@ var Budgetbase;
     //creates a new reference or finds an existing reference and return
     Budgetbase = function (url) {
         var splitUrl = url.split('/');
+        if(!splitUrl.length >= 3){
+            throw new Error('Massive failure');
+        }
+
+        //todo fix this
+        var baseUrl = splitUrl[0] + '/' + splitUrl[1] + '/' + splitUrl[2] + '/';
+
         var ref = root;
         if (url !== '') {
             for (var i = 0, il = splitUrl.length; i < il; i++) {

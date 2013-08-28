@@ -3,12 +3,11 @@
 <head>
     <title></title>
     <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
-
     <script>
         var Budgetbase = Firebase;
 
-        var root = "https://burst.firebaseio.com/";
-        var ref = new Budgetbase(root + "one");
+        var root = "https://dev-firebase.firebaseio.com/";
+        var ref = new Budgetbase(root + "two");
 
         var fn_add = function(s){
             console.log(s.name() + " was added");
@@ -18,28 +17,25 @@
             console.log(s.name() + " was removed");
         };
 
+
+
         var initial = {
             'a':{
                 "b1":2,
-                "b2":3
-        }
+                "b2":4
+            }
         };
 
         var end = {
             'a':{
-                'b3':4
+                'b3':5
             }
         };
-
-
-        ref.set(initial);
-
-        ref.on('child_added', fn_add);
-
-        ref.parent().on('child_removed', fn_remove);
         ref.child('a').on('child_removed', fn_remove);
+        ref.on('child_added', fn_add);
+        ref.on('child_removed', fn_remove);
+        ref.set(initial);
         ref.update(end);
-
     </script>
 </head>
 <body>
