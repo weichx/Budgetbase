@@ -7,21 +7,39 @@
     <script>
         var Budgetbase = Firebase;
 
-        var root = "https://dev-firebase.firebaseio.com/";
-        var ref = new Budgetbase(root + 'nothere');
-        ref.update({
-            'child1':1,
-            'child2':2
-        });
+        var root = "https://burst.firebaseio.com/";
+        var ref = new Budgetbase(root + "one");
 
-        var fn = function(s){
-            console.log(s.name());
+        var fn_add = function(s){
+            console.log(s.name() + " was added");
         };
-        ref.on('child_added', fn);
 
-        ref.off('child_added', fn);
+        var fn_remove = function(s){
+            console.log(s.name() + " was removed");
+        };
 
-        ref.child("hi").set('k');
+        var initial = {
+            'a':{
+                "b1":2,
+                "b2":3
+        }
+        };
+
+        var end = {
+            'a':{
+                'b3':4
+            }
+        };
+
+
+        ref.set(initial);
+
+        ref.on('child_added', fn_add);
+
+        ref.parent().on('child_removed', fn_remove);
+        ref.child('a').on('child_removed', fn_remove);
+        ref.update(end);
+
     </script>
 </head>
 <body>

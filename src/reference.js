@@ -84,6 +84,8 @@ Reference.prototype = {
     },
 
     //subscribes the reference to events. we could check that the event is valid, but we dont for now.
+    //in actual firebase on and off and once are query objects that mark a node as active. once networking
+    //is implemented we will do something similar and this code will likely change a bit.
     on:function (evtType, once, callback, context) {
         if (!callback) throw new Error('You must supply a callback and event type to on');
         if (evtType === 'value') {
@@ -335,5 +337,4 @@ Reference.prototype = {
     child:function (key) {
         return this._addOrRetrieveChild(key);
     }
-}
-;
+};
