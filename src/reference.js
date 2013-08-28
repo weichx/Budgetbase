@@ -193,7 +193,6 @@ Reference.prototype = {
                     console.log("should be getting here " + oldValue[x]);
                     child = this._addOrRetrieveChild(x);
                     this._willRemoveChild(x, child._data);     // was old value of x.
-                    this._fireEvent('child_removed', child._splitUrl, oldValue[x]);
                 } else {    //update old values still in new value
                     child = this._addOrRetrieveChild(x);
                     child._set(value[x]);
