@@ -11,9 +11,10 @@ test('A reference can be created through Budgetbase()', function () {
 
 test('A reference should have a properly split (and private) url', function () {
     var ref = new Budgetbase(R +'one/two/three')._storeRef;
-    equal(ref._splitUrl[3], 'one', 'splitUrl[3] should be one, was ' + ref._splitUrl[3]);
-    equal(ref._splitUrl[4], 'two', 'splitUrl[4] should be two, was ' + ref._splitUrl[4]);
-    equal(ref._splitUrl[5], 'three', 'splitUrl[5] should be three, was ' + ref._splitUrl[5]);
+    console.log(ref);
+    equal(ref._splitUrl[1], 'one', 'splitUrl[1] should be one, was ' + ref._splitUrl[1]);
+    equal(ref._splitUrl[2], 'two', 'splitUrl[2] should be two, was ' + ref._splitUrl[2]);
+    equal(ref._splitUrl[3], 'three', 'splitUrl[3] should be three, was ' + ref._splitUrl[3]);
 });
 
 test('A references url should be accurate', function () {

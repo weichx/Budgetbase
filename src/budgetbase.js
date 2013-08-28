@@ -5,14 +5,14 @@ var Budgetbase;
     //creates a new reference or finds an existing reference and return
     Budgetbase = function (url) {
         var splitUrl = url.split('/');
-        if(!splitUrl.length >= 3){
+        if (!splitUrl.length >= 3) {
             throw new Error('Massive failure');
         }
         //todo fix this
-        var baseUrl = splitUrl[0] + '/' + splitUrl[1] + '/' + splitUrl[2] + '/';
+        var baseUrl = splitUrl[0] + '/' + splitUrl[1] + '/' + splitUrl[2];
 
         var ref;
-        if(!Budgetbase._roots[baseUrl]){
+        if (!Budgetbase._roots[baseUrl]) {
             Budgetbase._roots[baseUrl] = new Reference([baseUrl], null);
         }
         ref = Budgetbase._roots[baseUrl];
@@ -72,6 +72,10 @@ var Budgetbase;
 
         child:function (childPath) {
             return new Budgetbase(this._storeRef._url + '/' + childPath);
+        },
+
+        root:function () {
+            return new Budgetbase(this._storeRef._splitUrl[0]);
         }
     };
 
@@ -84,7 +88,7 @@ var Budgetbase;
     //mainly for testing, this resets the root object, allowing other objects
     //to be garbage collected and effectively resetting the data tree.
     Budgetbase.resetStore = function () {
-        root = new Reference([], null);
+        Budgetbase.roots = {};
     };
 
     //returns the root reference's data object

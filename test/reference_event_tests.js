@@ -7,7 +7,7 @@ module('Reference Events', {
 test('calling `set` will write data into the store', function () {
     var ref = new Budgetbase(R + 'one/two');
     ref.set('hello budgetbase!');
-    var store = Budgetbase.getStore();
+    var store = ref.root()._storeRef._data;
     equal(store.one.two, 'hello budgetbase!', 'should have written `hello budgetbase! into the store');
 });
 
