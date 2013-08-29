@@ -55,7 +55,7 @@ var Budgetbase;
             this._storeRef.remove();
         },
 
-        url:function () {
+        toString:function () {
             return this._storeRef._url;
         },
 
